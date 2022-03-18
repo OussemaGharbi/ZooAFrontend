@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
-import { Veterinaire } from 'src/model/veterinaire';
+import { User } from 'src/model/User';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +9,7 @@ export class VeterinaireService {
 
   api:string= "http://localhost:3000/api/"
 
-  veterinaires: Veterinaire[] =[]
+  veterinaires: User[] =[]
   constructor(private http:HttpClient) { 
 
   
