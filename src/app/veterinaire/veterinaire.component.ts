@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from 'src/model/User';
 import { Veterinaire } from 'src/model/veterinaire';
 import { VeterinaireService } from '../services/veterinaire.service';
 
@@ -8,14 +9,14 @@ import { VeterinaireService } from '../services/veterinaire.service';
   styleUrls: ['./veterinaire.component.css']
 })
 export class VeterinaireComponent implements OnInit {
-  veterinaires: Veterinaire[]=[]
+  veterinaires: User[]=[]
   constructor(private veterinaireService:VeterinaireService) { }
 
   ngonchange() {}
   ngOnInit(): void {
 
   this.veterinaireService.getVeterinaires().subscribe(resultat=>{
-    this.veterinaires=resultat as Veterinaire[];
+    this.veterinaires=resultat as User[];
     console.log(this.veterinaires)
 
   });
