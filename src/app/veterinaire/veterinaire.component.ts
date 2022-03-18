@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from 'src/model/User';
-import { Veterinaire } from 'src/model/veterinaire';
+import { User } from 'src/model/user';
+import { Veterinaire } from 'src/model/Veterinaire';
 import { VeterinaireService } from '../services/veterinaire.service';
 
 @Component({
