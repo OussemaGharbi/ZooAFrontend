@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Appointment } from 'src/model/appointment';
-import { AppointmentService } from '../services/appointment.service';
+import { AppointmentService } from '../../services/appointment.service';
 
 @Component({
   selector: 'app-appointment',

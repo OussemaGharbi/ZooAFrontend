@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/model/user';
-import { VeterinaireService } from '../services/veterinaire.service';
+import { VeterinaireService } from '../../services/veterinaire.service';
 
 @Component({
   selector: 'app-veterinaire',

@@ -17,7 +17,7 @@
             <td scope="row"> {{ appointment.user.fname  }} </td>
             <td scope="row"> {{ appointment.user['phone']  }} </td>
             <td scope="row"> {{ appointment.user['email']  }} </td>
-            <td> {{ appointment.date | date}} </td>
+            <td> {{ appointment.date | date }} </td>
             <td scope="row"> {{ appointment['status'] ? 'Approved' :'Pending'}} </td>
             <td> <button class="btn btn-info" (click)="Uprove(appointment['_id'])">Aprove</button> </td>
         </tr>
