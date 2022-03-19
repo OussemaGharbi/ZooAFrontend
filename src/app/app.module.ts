@@ -11,6 +11,7 @@ import { HeaderComponent } from './header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PostsComponent } from './post/posts.component';
 import { FooterComponent } from './footer/footer.component';
+import { AppointmentComponent } from './appointment/appointment.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { FooterComponent } from './footer/footer.component';
     NavbarComponent,
     HeaderComponent,
     PostsComponent,
-    FooterComponent
+    FooterComponent,
+    AppointmentComponent
   ],
   imports: [
     BrowserModule,

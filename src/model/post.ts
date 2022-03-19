@@ -1,4 +1,4 @@
-import { User } from "./User";
+import { User } from "./user";
 import { Comment } from "./comment";
 import { Like } from "./like";
 

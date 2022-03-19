@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
-import { User } from 'src/model/user';
+import {User} from 'src/model/user'
 
 @Injectable({
   providedIn: 'root'
@@ -25,5 +25,9 @@ export class VeterinaireService {
   delete(id){
     return this.http.delete(this.api + 'veterinaire/'+id )
 
+  }
+
+  uprove(id){
+    return this.http.get
   }
 }
