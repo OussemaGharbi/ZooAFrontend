@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/model/user';
-import { Veterinaire } from 'src/model/Veterinaire';
-import { VeterinaireService } from '../services/veterinaire.service';
+import { VeterinaireService } from '../../services/veterinaire.service';
 
 @Component({
   selector: 'app-veterinaire',
@@ -26,6 +25,9 @@ export class VeterinaireComponent implements OnInit {
     this.veterinaireService.delete(id).subscribe(resultat=>{
       console.log(resultat)
     })
+  }
+  Uprove(id){
+
   }
 
 }

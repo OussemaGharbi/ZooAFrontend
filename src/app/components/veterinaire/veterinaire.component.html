@@ -15,8 +15,10 @@
             <td scope="row">{{item.username}} </td>
             <td> {{item.email}} </td>
             <td> {{item.phone}}</td>
+            <td> {{item._id}}</td>
             <td>
                 <button class="btn btn-danger" (click)="Delete(item._id)">Delete</button>
+                <button class="btn btn-info" (click)="Uprove(item._id)"> Uprove</button>
             </td>
         </tr>
         

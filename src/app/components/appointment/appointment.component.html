@@ -1,0 +1,31 @@
+<div class="container">
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Prenom</th>
+            <th>Nom</th>
+            <th>PhoneNumber</th>
+            <th>Email</th>
+            <th >Description</th>
+            <th>Date</th>
+            <th>status</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let appointment of appointments">
+
+            <td scope="row"> {{ appointment.user['lname']}} </td>
+            <td scope="row"> {{ appointment.user.fname  }} </td>
+            <td scope="row"> {{ appointment.user['phone']  }} </td>
+            <td scope="row"> {{ appointment.user['email']  }} </td>
+            <td scope="row"> {{ appointment['description']  }} </td>
+            <td> {{ appointment.date | date }} </td>
+
+            <td [ngClass]="approvedStatus(appointment['status'])"> {{ appointment['status'] ? 'Approved' :'Pending'}} </td>
+            <td> <button class="btn btn-info" (click)="Uprove(appointment['_id'])">Aprove</button> </td>
+        </tr>
+       
+    </tbody>
+</table>
+</div>

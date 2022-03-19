@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse} from '@angular/common/http';
 import { catchError, Observable, throwError } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Post } from 'src/model/Post';
+import { Post } from 'src/model/post';
 import { Comment } from 'src/model/comment';
 import { User } from 'src/model/user';
 import { Like } from 'src/model/like';
