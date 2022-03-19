@@ -44,7 +44,7 @@ mat-form-field{
 .pass:hover{
   text-decoration: underline;
 }
-input[type="submit"]{
+button{
   width: 100%;
   height: 50px;
   border: 1px solid;
@@ -56,7 +56,7 @@ input[type="submit"]{
   cursor: pointer;
   outline: none;
 }
-input[type="submit"]:hover{
+button:hover{
   border-color: #2691d9;
   border-width: 2px;
   transition: .5s;
@@ -73,4 +73,8 @@ input[type="submit"]:hover{
 }
 .signup_link a:hover{
   text-decoration: underline;
+}
+#loginMessage{
+  text-align: center;
+  margin-top:1em;
 }

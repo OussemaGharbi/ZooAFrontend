@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { FormGroup, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { AuthData } from 'src/model/authData';
@@ -18,17 +19,33 @@ export class AuthService {
   getAuthStatusListener(){
     return this.authStatusListener.asObservable();
   }
-  createUser(email: string, password: string){
-    const authData = new AuthData(email,password);
-    console.log(authData);
-    this.http.post("http://localhost:3000/api/user/signup",authData).subscribe(response => {
-      console.log(response);
+  signup(form:FormGroup){
+    let success;
+    console.log(form.value)
+    const user = {
+      fname:form.value.fname,
+      lname:form.value.lname,
+      email:form.value.email,
+      password:form.value.password,
+      birthdate:form.value.birthdate,
+      phone:form.value.phone,
+    }
+    this.http.post("http://localhost:3000/api/users/signup",user).subscribe(response => {
+      if(response["error"]){
+        success = false;
+        return null;
+      }
+      success=true
+      this.router.navigate(["/login"])
+
     })
+    return success;
   }
 
   login(email: string, password: string){
-    const authData = new AuthData(email,password);
-    this.http.post<{token:string,expiresIn:number}>("http://localhost:3000/api/user/login",authData).subscribe(response => {
+    console.log(email)
+    console.log(password)
+    this.http.post<{token:string,expiresIn:number}>("http://localhost:3000/api/users/login",{email:email,password:password}).subscribe(response => {
       console.log(response);
       this.token=response.token;
       if(this.token){
@@ -42,6 +59,7 @@ export class AuthService {
       }
 
     })
+    return this.token;
   }
 
   logout(){
@@ -89,7 +107,7 @@ export class AuthService {
   private getAuthData(){
     const token = localStorage.getItem("token");
     const expirationDate = localStorage.getItem("expiration")
-    if(!token || !expirationDate) return;
+    if(!token || !expirationDate) return null;
     return {token:token,expirationDate:new Date(expirationDate)}
   }
 }

@@ -20,6 +20,7 @@ import {MatIconModule} from '@angular/material/icon';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,6 +44,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     MatDatepickerModule,
     MatNativeDateModule,
     MatIconModule,
+    ReactiveFormsModule
   ],
   providers: [VeterinaireService],
   bootstrap: [AppComponent]
