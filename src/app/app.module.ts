@@ -20,8 +20,12 @@ import {MatIconModule} from '@angular/material/icon';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+<<<<<<< HEAD
 import { TakeAppointmentComponent } from './components/take-appointment/take-appointment.component';
 import {MatSelectModule} from '@angular/material/select';
+=======
+import { ReactiveFormsModule } from '@angular/forms';
+>>>>>>> d8006196b058a525943011d0d037c98e9a6505ab
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,7 +50,11 @@ import {MatSelectModule} from '@angular/material/select';
     MatDatepickerModule,
     MatNativeDateModule,
     MatIconModule,
+<<<<<<< HEAD
     MatSelectModule
+=======
+    ReactiveFormsModule
+>>>>>>> d8006196b058a525943011d0d037c98e9a6505ab
   ],
   providers: [VeterinaireService],
   bootstrap: [AppComponent]
