@@ -6,13 +6,15 @@ import { VeterinaireComponent } from './components/veterinaire/veterinaire.compo
 
 import { AuthComponent } from './components/auth/auth.component';
 import { SignupComponent } from './components/signup/signup.component';
+import { TakeAppointmentComponent } from './components/take-appointment/take-appointment.component';
 
 
 const routes: Routes = [
     {path:'veterinaire', component:VeterinaireComponent},
     {path:'login', component:AuthComponent},
     {path:'signup', component:SignupComponent},
-    {path:'appointments/:id', component:AppointmentComponent}
+    {path:'appointments/:id', component:AppointmentComponent},
+    {path:'takeAppointment', component:TakeAppointmentComponent},
 
 ];
 

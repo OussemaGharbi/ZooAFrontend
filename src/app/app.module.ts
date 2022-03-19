@@ -20,6 +20,8 @@ import {MatIconModule} from '@angular/material/icon';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { TakeAppointmentComponent } from './components/take-appointment/take-appointment.component';
+import {MatSelectModule} from '@angular/material/select';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,6 +33,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     AppointmentComponent,
     AuthComponent,
     SignupComponent,
+    TakeAppointmentComponent
   ],
   imports: [
     BrowserModule,
@@ -43,6 +46,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     MatDatepickerModule,
     MatNativeDateModule,
     MatIconModule,
+    MatSelectModule
   ],
   providers: [VeterinaireService],
   bootstrap: [AppComponent]
