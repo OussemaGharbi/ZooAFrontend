@@ -26,4 +26,8 @@ export class VeterinaireService {
     return this.http.delete(this.api + 'veterinaire/'+id )
 
   }
+
+  uprove(id){
+    return this.http.get
+  }
 }
