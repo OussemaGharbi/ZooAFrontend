@@ -19,6 +19,8 @@ import {MatIconModule} from '@angular/material/icon';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { TakeAppointmentComponent } from './components/take-appointment/take-appointment.component';
+import {MatSelectModule} from '@angular/material/select';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthInterceptor } from './auth-interceptor';
 @NgModule({
@@ -32,6 +34,7 @@ import { AuthInterceptor } from './auth-interceptor';
     AppointmentComponent,
     AuthComponent,
     SignupComponent,
+    TakeAppointmentComponent
   ],
   imports: [
     BrowserModule,
@@ -44,6 +47,7 @@ import { AuthInterceptor } from './auth-interceptor';
     MatDatepickerModule,
     MatNativeDateModule,
     MatIconModule,
+    MatSelectModule,
     ReactiveFormsModule
   ],
   providers: [VeterinaireService,{provide:HTTP_INTERCEPTORS,useClass:AuthInterceptor,multi:true}],

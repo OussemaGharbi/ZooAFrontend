@@ -1,13 +1,15 @@
-<table class="table table-dark">
+<div class="container">
+
+<table class="table table-hover">
     <thead>
         <tr>
             <th>Prenom</th>
             <th>Nom</th>
             <th>PhoneNumber</th>
             <th>Email</th>
+            <th >Description</th>
             <th>Date</th>
             <th>status</th>
-            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -17,10 +19,13 @@
             <td scope="row"> {{ appointment.user.fname  }} </td>
             <td scope="row"> {{ appointment.user['phone']  }} </td>
             <td scope="row"> {{ appointment.user['email']  }} </td>
+            <td scope="row"> {{ appointment['description']  }} </td>
             <td> {{ appointment.date | date }} </td>
-            <td scope="row"> {{ appointment['status'] ? 'Approved' :'Pending'}} </td>
+
+            <td [ngClass]="approvedStatus(appointment['status'])"> {{ appointment['status'] ? 'Approved' :'Pending'}} </td>
             <td> <button class="btn btn-info" (click)="Uprove(appointment['_id'])">Aprove</button> </td>
         </tr>
        
     </tbody>
 </table>
+</div>

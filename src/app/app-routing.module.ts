@@ -8,6 +8,7 @@ import { AuthComponent } from './components/auth/auth.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { AuthGuard } from './services/auth.guard';
 import { PostsComponent } from './components/post/posts.component';
+import { TakeAppointmentComponent } from './components/take-appointment/take-appointment.component';
 
 
 const routes: Routes = [
@@ -16,6 +17,8 @@ const routes: Routes = [
     {path:'signup', component:SignupComponent},
     {path:'appointments/:id', component:AppointmentComponent},
     {path:'', component:PostsComponent},
+    {path:'takeAppointment', component:TakeAppointmentComponent},
+
 ];
 
 @NgModule({
