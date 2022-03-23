@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse} from '@angular/common/http';
 import { catchError, Observable, throwError } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, retry } from 'rxjs/operators';
 import { Post } from 'src/model/post';
-import { Comment } from 'src/model/comment';
+import { Comment } from 'src/model/Comment';
 import { User } from 'src/model/user';
-import { Like } from 'src/model/like';
+import { Like } from 'src/model/Like';
 
 @Injectable({
   providedIn: 'root'
@@ -68,6 +68,15 @@ export class PostService {
     )
   }
 
+  //get All comments
+getAllComments(postid:string) : Observable<any>{
+  return this.http.get(this.api +'posts/'+postid+ '/comments/').pipe(
+    catchError(this.handleError)
+  )
+}
+
+
+// add comment
   addComment(Post_id: string,text:string,comment:Comment): Observable<any>{
     return this.http.post<{comment:Comment}>(this.api + 'posts/'+Post_id,{comment:comment}).pipe(
       catchError(this.handleError)
@@ -85,16 +94,20 @@ export class PostService {
       catchError(this.handleError)
     )
   }
-
-  addLike(Post_id:string,like:Like) : Observable<any>{
-    return this.http.post<{like:Like}>(this.api+'posts/'+Post_id+'Like/',{like:like}).pipe(
+  getLikes(Post_id:string) : Observable<any>{
+    return this.http.get(this.api + 'posts/'+Post_id+'/Likes/').pipe(
+      catchError(this.handleError)
+    )
+  }
+  addLike(Post_id:string) : Observable<any>{
+    return this.http.post(this.api+'posts/'+Post_id+'/Like/',Like).pipe(
       catchError(this.handleError)
     )
   }
 
-  deleteLike(Post_id:string,like_id:string) : Observable<any>{
-    return this.http.delete(this.api + 'posts/'+Post_id +'like/'+like_id).pipe(
-      catchError(this.handleError)
-    )
-  }
+  // deleteLike(Post_id:string,like_id:string) : Observable<any>{
+  //   return this.http.delete(this.api + 'posts/'+Post_id +'/like/'+like_id).pipe(
+  //     catchError(this.handleError)
+  //   )
+  // }
 }
