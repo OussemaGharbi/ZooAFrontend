@@ -8,7 +8,7 @@
                 </div>
                 <div class="col-sm-auto">
                     <div><span> {{ post.user['fname'] }}{{ post.user['lname'] }} </span> </div>
-                    <div><span> {{ post['date'] |date }} </span></div>
+                    <div><span><mat-icon>datepicker</mat-icon> {{ post['date'] |date }} </span></div>
                 </div>
                 <div class="col">
                     <button mat-icon-button color="warn" style="float: right;">
@@ -32,7 +32,7 @@
                 <label>{{ post['likes'].length }} people likes</label>
             </div>
             <div class="col-sm">
-                <label style="float: right;">{{ post['comments'].length }} comments</label>
+                <label style="float: right;margin-right: 10px;">{{ post['comments'].length }} comments</label>
             </div>
         </div>
         <div class="card-footer" >

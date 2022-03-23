@@ -12,8 +12,8 @@ export class ShowAllCommentsComponent implements OnInit {
 posts :Post []
 comments : any[]
   constructor(private postService: PostService,private router: Router,private activatedRoute: ActivatedRoute) { }
- idpost:string 
-  
+idpost:string 
+text:string
   ngOnInit(): void {
     
 
@@ -21,6 +21,7 @@ comments : any[]
       next:param=>{
         this.idpost=param['id'];
         this.showPostComments(this.idpost)
+        
       }
     })
 
@@ -28,7 +29,14 @@ comments : any[]
   showPostComments(postid:string){
     this.postService.getAllComments(postid).subscribe(resultat=>{
       this.comments= resultat as Comment[];
+      
     })
+}
+addComment(postid,text){
+  this.postService.addComment(postid,text).subscribe(resultat=>{
+    console.log(resultat)
+  })
+
 }
 
 }

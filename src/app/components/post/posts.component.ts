@@ -23,6 +23,9 @@ isAuthenticated :boolean
 userid :string
 likeid :string
 idpost :string
+
+nbrlikes:number 
+
   constructor(private postService: PostService,
               private authService: AuthService,
               private matButton:MatButtonModule,
@@ -37,7 +40,6 @@ idpost :string
       this.likes=this.posts['likes']
       this.isAuthenticated= this.authService.isAuthenticated
       this.showComments= this.posts.map(post => false)
-      
     });
   }
   
@@ -48,13 +50,22 @@ if (!(this.isAuthenticated))
 }
 }
   addlike(postid){
+    this.checkAuth()
     this.postService.addLike(postid).subscribe(resultat=>{
-      console.log(resultat)
+      this.nbrlikes=resultat.likes.length
+      this.posts=this.posts.map(post=>{
+        if(post._id==resultat._id){
+          console.log(post)
+          return resultat
+        }else{
+          return post
+        }
+      })
     })
-    this.ngOnInit()
   }
 
   showSection(index) {
+    this.checkAuth();
     this.showComments=this.posts.map(comment => false)      
     this.showComments[index]=true
   }

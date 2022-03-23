@@ -29,6 +29,7 @@ import { EditCommentComponent } from './components/post/edit-comment/edit-commen
 import { ShowAllCommentsComponent } from './components/post/show-all-comments/show-all-comments.component';
 import { ShowCommentsDirective } from './directives/show-comments.directive';
 import { AuthInterceptor } from './auth-interceptor';
+import { LikesPipePipe } from './pipes/likes-pipe.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,7 +47,8 @@ import { AuthInterceptor } from './auth-interceptor';
     NewCommentComponent,
     EditCommentComponent,
     ShowAllCommentsComponent,
-    ShowCommentsDirective
+    ShowCommentsDirective,
+    LikesPipePipe
   ],
   imports: [
     BrowserModule,

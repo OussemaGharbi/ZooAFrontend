@@ -77,8 +77,8 @@ getAllComments(postid:string) : Observable<any>{
 
 
 // add comment
-  addComment(Post_id: string,text:string,comment:Comment): Observable<any>{
-    return this.http.post<{comment:Comment}>(this.api + 'posts/'+Post_id,{comment:comment}).pipe(
+  addComment(Post_id: string,text:string): Observable<any>{
+    return this.http.post(this.api + 'posts/'+Post_id,Comment).pipe(
       catchError(this.handleError)
     )
   }
