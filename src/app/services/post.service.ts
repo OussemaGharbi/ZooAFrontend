@@ -99,14 +99,11 @@ getAllComments(postid:string) : Observable<any>{
       catchError(this.handleError)
     )
   }
-
-  
-
-  // addLike(Post_id:string) : Observable<any>{
-  //   return this.http.post(this.api+'posts/'+Post_id+'/Like/',Like).pipe(
-  //     catchError(this.handleError)
-  //   )
-  // }
+  addLike(Post_id:string) : Observable<any>{
+    return this.http.post(this.api+'posts/'+Post_id+'/Like/',Like).pipe(
+      catchError(this.handleError)
+    )
+  }
 
   // deleteLike(Post_id:string,like_id:string) : Observable<any>{
   //   return this.http.delete(this.api + 'posts/'+Post_id +'/like/'+like_id).pipe(

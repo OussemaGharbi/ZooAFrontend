@@ -37,7 +37,7 @@ idpost :string
       this.likes=this.posts['likes']
       this.isAuthenticated= this.authService.isAuthenticated
       this.showComments= this.posts.map(post => false)
-
+      
     });
   }
   
@@ -48,9 +48,12 @@ if (!(this.isAuthenticated))
 }
 }
   addlike(postid){
-    this.checkAuth();
-  
-}
+    this.postService.addLike(postid).subscribe(resultat=>{
+      console.log(resultat)
+    })
+    this.ngOnInit()
+  }
+
   showSection(index) {
     this.showComments=this.posts.map(comment => false)      
     this.showComments[index]=true
