@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { Like } from 'src/model/Like';
+import { Like } from 'src/model/like';
 import { Post } from 'src/model/post';
 import { PostService } from '../../services/post.service';
 import {MatButtonModule} from '@angular/material/button'; 
