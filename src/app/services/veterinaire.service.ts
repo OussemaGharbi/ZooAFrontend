@@ -12,7 +12,6 @@ export class VeterinaireService {
   veterinaires: User[] =[]
   constructor(private http:HttpClient) { 
 
-  
   }
 
   getApi(){
@@ -24,7 +23,6 @@ export class VeterinaireService {
   }
   delete(id){
     return this.http.delete(this.api + 'veterinaire/'+id )
-
   }
 
   uprove(id){

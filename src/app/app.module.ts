@@ -8,7 +8,6 @@ import { VeterinaireComponent } from './components/veterinaire/veterinaire.compo
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PostsComponent } from './components/post/posts.component';
 import { AppointmentComponent } from './components/appointment/appointment.component';
-
 import { AuthComponent } from './components/auth/auth.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatInputModule} from '@angular/material/input';
