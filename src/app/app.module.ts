@@ -1,4 +1,4 @@
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
@@ -8,7 +8,6 @@ import { VeterinaireComponent } from './components/veterinaire/veterinaire.compo
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PostsComponent } from './components/post/posts.component';
 import { AppointmentComponent } from './components/appointment/appointment.component';
-
 import { AuthComponent } from './components/auth/auth.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatInputModule} from '@angular/material/input';
@@ -29,6 +28,7 @@ import { NewCommentComponent } from './components/post/new-comment/new-comment.c
 import { EditCommentComponent } from './components/post/edit-comment/edit-comment.component';
 import { ShowAllCommentsComponent } from './components/post/show-all-comments/show-all-comments.component';
 import { ShowCommentsDirective } from './directives/show-comments.directive';
+import { AuthInterceptor } from './auth-interceptor';
 @NgModule({
   declarations: [
     AppComponent,
@@ -62,7 +62,7 @@ import { ShowCommentsDirective } from './directives/show-comments.directive';
     MatSelectModule,
     ReactiveFormsModule
   ],
-  providers: [VeterinaireService],
+  providers: [VeterinaireService,{provide:HTTP_INTERCEPTORS,useClass:AuthInterceptor,multi:true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

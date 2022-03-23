@@ -6,8 +6,9 @@ import { VeterinaireComponent } from './components/veterinaire/veterinaire.compo
 
 import { AuthComponent } from './components/auth/auth.component';
 import { SignupComponent } from './components/signup/signup.component';
-import { TakeAppointmentComponent } from './components/take-appointment/take-appointment.component';
+import { AuthGuard } from './services/auth.guard';
 import { PostsComponent } from './components/post/posts.component';
+import { TakeAppointmentComponent } from './components/take-appointment/take-appointment.component';
 import { NewPostComponent } from './components/post/new-post/new-post.component';
 import { EditPostComponent } from './components/post/edit-post/edit-post.component';
 import { NewCommentComponent } from './components/post/new-comment/new-comment.component';
@@ -20,6 +21,7 @@ const routes: Routes = [
     {path:'login', component:AuthComponent},
     {path:'signup', component:SignupComponent},
     {path:'appointments/:id', component:AppointmentComponent},
+    {path:'', component:PostsComponent},
     {path:'takeAppointment', component:TakeAppointmentComponent},
     
   {
@@ -39,6 +41,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [AuthGuard]
 })
 export class AppRoutingModule { }

@@ -11,9 +11,12 @@ import { AuthData } from 'src/model/authData';
 export class AuthService {
   private token?: string;
   isAuthenticated?: boolean;
-
+  private userId:string;
+  
   constructor(private http:HttpClient,private router:Router) { }
-
+  getUserId():string {
+    return this.userId;
+  }
   getToken(){ return this.token; }  
   private authStatusListener = new Subject<boolean>();
   getAuthStatusListener(){
@@ -45,7 +48,7 @@ export class AuthService {
   login(email: string, password: string){
     console.log(email)
     console.log(password)
-    this.http.post<{token:string,expiresIn:number}>("http://localhost:3000/api/users/login",{email:email,password:password}).subscribe(response => {
+    this.http.post<{token:string,expiresIn:number, userId:string}>("http://localhost:3000/api/users/login",{email:email,password:password}).subscribe(response => {
       console.log(response);
       this.token=response.token;
       if(this.token){
@@ -55,6 +58,7 @@ export class AuthService {
         const expirationDate = new Date(now.getTime() + response.expiresIn * 1000);
         this.saveAuthData(this.token,expirationDate)
         this.authStatusListener.next(true);
+        this.userId=response.userId;
         this.router.navigate(["/"]);
       }
 
