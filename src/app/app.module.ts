@@ -29,6 +29,10 @@ import { EditCommentComponent } from './components/post/edit-comment/edit-commen
 import { ShowAllCommentsComponent } from './components/post/show-all-comments/show-all-comments.component';
 import { ShowCommentsDirective } from './directives/show-comments.directive';
 import { AuthInterceptor } from './auth-interceptor';
+import { CoolSocialLoginButtonsModule } from '@angular-cool/social-login-buttons';
+import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
+import {GoogleLoginProvider} from 'angularx-social-login';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,7 +50,8 @@ import { AuthInterceptor } from './auth-interceptor';
     NewCommentComponent,
     EditCommentComponent,
     ShowAllCommentsComponent,
-    ShowCommentsDirective
+    ShowCommentsDirective,
+
   ],
   imports: [
     BrowserModule,
@@ -60,9 +65,33 @@ import { AuthInterceptor } from './auth-interceptor';
     MatNativeDateModule,
     MatIconModule,
     MatSelectModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CoolSocialLoginButtonsModule,
+    SocialLoginModule
   ],
-  providers: [VeterinaireService,{provide:HTTP_INTERCEPTORS,useClass:AuthInterceptor,multi:true}],
+  providers: [
+    VeterinaireService,
+    {provide:HTTP_INTERCEPTORS,useClass:AuthInterceptor,multi:true},
+    //google Auth Provider
+
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider(
+              '21427827582-idlf42p67i647c1h68d6cen3t21if87s.apps.googleusercontent.com'
+            )
+          }
+        ],
+        onError: (err) => {
+          console.error(err);
+        }
+      } as SocialAuthServiceConfig,
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

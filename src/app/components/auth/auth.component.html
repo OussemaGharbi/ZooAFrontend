@@ -2,7 +2,7 @@
 <div class="mycontainer">
     <div class="center">
         <h1>Login</h1>
-        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" >
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
             <mat-form-field>
                 <mat-label>Email</mat-label>
                 <mat-icon matSuffix >mail_outline</mat-icon>
@@ -15,6 +15,9 @@
               </mat-form-field>
           <div class="pass"><a>Forgot Password?</a></div>
           <button type="submit">Login</button>
+              <div class="google">
+                <cool-google-button color="dark" (click)="signInWithGoogle()"></cool-google-button>
+              </div>
           <mat-error id="loginMessage" *ngIf="loginFailed">Login Failed</mat-error>
           <div class="signup_link">
             Not a member? <a routerLink="/signup">Signup</a>

@@ -19,6 +19,10 @@ export class AuthComponent implements OnInit {
     ngOnInit() {
     
     }
+
+    signInWithGoogle(){
+      this.authService.signInWithGoogle();
+    }
     onSubmit(){
 
       const token=this.authService.login(this.loginForm.value.email, this.loginForm.value.password);

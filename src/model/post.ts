@@ -1,5 +1,5 @@
-import { Comment } from "./Comment";
-import { Like } from "./Like";
+import { Comment } from "./comment";
+import { Like } from "./like";
 import { User } from "./user";
 
 
