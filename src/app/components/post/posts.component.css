@@ -4,13 +4,25 @@
 .blueColor{
     color:blue;
 }
-.rounded{
+.img{
     border-radius:50%;
-    border: 1px solid black;
+    border:1px dotted black;
 }
+
 .post {
     width: 200px;
     height: 300px;
     padding: 30px;
 }
 
+.dotted{
+    border-radius:50%;
+    background-color:white;
+    padding:0px;
+    box-shadow: 0px ;
+}
+.dotted :hover{
+background-color:#8b3c3c;
+color:white;
+border-radius:50%;
+}

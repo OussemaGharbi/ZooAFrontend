@@ -1,11 +1,51 @@
+<div>
+    <div class="row">
+        <div class="col-1 img" style="border: 1px solid rgb(201, 93, 93)">
+            <img src="" alt="user">
+        </div>
+        <div class="col-auto" style="width:450px">
+            <input type="text" #comment class="form-control" placeholder="Leave comment here...">
+        </div>
+        <div class="col" style="width: 20px;height:20px;">
+            <button (click)="addComment(comment.value)">
+                <i class="fa-solid fa-plus"></i>
+            </button>
+        </div>
 
-<div class="">
-    <ul *ngFor="let comment of comments">
-        <li>{{ comment['text'] }}</li>
-    </ul>    
+    </div>
 </div>
 
+<ul *ngFor="let comment of comments">
+    <div class="row">
+        <div class="col-sm-1 img" style="border: 1px solid rgb(194, 148, 148)">
+            <img src="" alt="user">
+        </div>
+        <div class="col-sm-auto comment">
+            <input type="text" name="newComment" value="" #newComment  style="display:none;">
+            <li *ngIf="showOldComment"> {{ comment['text'] }} </li>
+            <button style="display:none;" #cancel (click)="cancelchanges(newComment,cancel,validateLink)">Cancel</button>
+            <button #validateLink style="display:none;" (click)="validate(newComment,comment['_id'],cancel,validateLink)">Update</button>
+        </div>
+        <div class="col">
+            <button [matMenuTriggerFor]="appMenu" class="dotted">
+                <svg width="24" height="24" fill="none" viewBox="0 0 24 24">
+                    <path fill="currentColor"
+                        d="M13 12C13 12.5523 12.5523 13 12 13C11.4477 13 11 12.5523 11 12C11 11.4477 11.4477 11 12 11C12.5523 11 13 11.4477 13 12Z">
+                    </path>
+                    <path fill="currentColor"
+                        d="M9 12C9 12.5523 8.55228 13 8 13C7.44772 13 7 12.5523 7 12C7 11.4477 7.44772 11 8 11C8.55228 11 9 11.4477 9 12Z">
+                    </path>
+                    <path fill="currentColor"
+                        d="M17 12C17 12.5523 16.5523 13 16 13C15.4477 13 15 12.5523 15 12C15 11.4477 15.4477 11 16 11C16.5523 11 17 11.4477 17 12Z">
+                    </path>
+                </svg>
+            </button>
+            <mat-menu #appMenu="matMenu">
+                <button mat-menu-item (click)="editComment(comment['_id'],newComment,cancel,validateLink)">Edit</button>
+                <button mat-menu-item (click)="deleteComment(comment['_id'])">Delete</button>
+                <button mat-menu-item >Report</button>
 
-
-
-
+            </mat-menu>
+        </div>
+    </div>
+</ul>

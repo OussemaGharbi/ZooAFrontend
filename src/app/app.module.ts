@@ -21,7 +21,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { TakeAppointmentComponent } from './components/take-appointment/take-appointment.component';
 import {MatSelectModule} from '@angular/material/select';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NewPostComponent } from './components/post/new-post/new-post.component';
 import { EditPostComponent } from './components/post/edit-post/edit-post.component';
 import { NewCommentComponent } from './components/post/new-comment/new-comment.component';
@@ -30,6 +30,9 @@ import { ShowAllCommentsComponent } from './components/post/show-all-comments/sh
 import { ShowCommentsDirective } from './directives/show-comments.directive';
 import { AuthInterceptor } from './auth-interceptor';
 import { LikesPipePipe } from './pipes/likes-pipe.pipe';
+import {MatMenuModule} from '@angular/material/menu'; 
+import { MatButton, MatButtonModule } from '@angular/material/button';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -62,7 +65,11 @@ import { LikesPipePipe } from './pipes/likes-pipe.pipe';
     MatNativeDateModule,
     MatIconModule,
     MatSelectModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatMenuModule,
+    MatButtonModule,
+    FormsModule,
+    
   ],
   providers: [VeterinaireService,{provide:HTTP_INTERCEPTORS,useClass:AuthInterceptor,multi:true}],
   bootstrap: [AppComponent]
