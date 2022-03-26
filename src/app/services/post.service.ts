@@ -3,9 +3,11 @@ import { HttpClient, HttpErrorResponse} from '@angular/common/http';
 import { catchError, Observable, throwError } from 'rxjs';
 import { map, retry } from 'rxjs/operators';
 import { Post } from 'src/model/post';
-import { Comment } from 'src/model/comment';
+
 import { User } from 'src/model/user';
 import { Like } from 'src/model/like';
+import { Comment } from 'src/model/comment';
+
 
 @Injectable({
   providedIn: 'root'

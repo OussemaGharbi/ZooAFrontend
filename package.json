@@ -10,6 +10,7 @@
   },
   "private": true,
   "dependencies": {
+    "@angular-cool/social-login-buttons": "^13.0.0",
     "@angular/animations": "~13.2.0",
     "@angular/cdk": "^13.3.0",
     "@angular/common": "~13.2.0",
@@ -22,6 +23,7 @@
     "@angular/router": "~13.2.0",
     "@syncfusion/ej2-angular-calendars": "^19.4.56",
     "@syncfusion/ej2-calendars": "^19.4.56",
+    "angularx-social-login": "^4.1.0",
     "bootstrap": "^5.1.3",
     "ngx-material-timepicker": "^5.5.3",
     "rxjs": "~7.5.0",
