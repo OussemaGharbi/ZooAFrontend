@@ -1,0 +1,29 @@
+li{ 
+    list-style-type: none;   
+}
+
+  .comment{
+    width: auto;
+    height: auto;
+    background-color:#ddeaff;
+    color: #373737;
+    padding:10px; 
+    border-radius: 20px; 
+}
+
+.img{
+    border-radius:50%;
+    
+}
+.dotted{
+    border-radius:50%;
+    background-color:white;
+    padding:0px;
+    box-shadow: 0px ;
+}
+.dotted :hover{
+background-color:#8b3c3c;
+color:white;
+border-radius:50%;
+
+}

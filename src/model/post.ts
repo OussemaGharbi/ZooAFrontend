@@ -4,5 +4,5 @@ import { User } from "./user";
 
 
 export class Post{
-    constructor(public _id:string,public description:string,public image:string, public date:Date,public user:User,public comment:Comment[], public like:Like){}
+    constructor(public _id:string,public description:string,public images:string[], public date:Date,public user:User,public comment:Comment[], public like:Like){}
 }

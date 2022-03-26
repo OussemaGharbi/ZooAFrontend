@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { ShowAllCommentsComponent } from './show-all-comments.component';
 
 describe('ShowAllCommentsComponent', () => {

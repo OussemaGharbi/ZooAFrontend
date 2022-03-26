@@ -21,7 +21,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { TakeAppointmentComponent } from './components/take-appointment/take-appointment.component';
 import {MatSelectModule} from '@angular/material/select';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NewPostComponent } from './components/post/new-post/new-post.component';
 import { EditPostComponent } from './components/post/edit-post/edit-post.component';
 import { NewCommentComponent } from './components/post/new-comment/new-comment.component';
@@ -29,6 +29,8 @@ import { EditCommentComponent } from './components/post/edit-comment/edit-commen
 import { ShowAllCommentsComponent } from './components/post/show-all-comments/show-all-comments.component';
 import { ShowCommentsDirective } from './directives/show-comments.directive';
 import { AuthInterceptor } from './auth-interceptor';
+import {MatMenuModule} from '@angular/material/menu'; 
+import { MatButton, MatButtonModule } from '@angular/material/button';
 import { CoolSocialLoginButtonsModule } from '@angular-cool/social-login-buttons';
 import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
 import {GoogleLoginProvider} from 'angularx-social-login';
@@ -51,7 +53,6 @@ import {GoogleLoginProvider} from 'angularx-social-login';
     EditCommentComponent,
     ShowAllCommentsComponent,
     ShowCommentsDirective,
-
   ],
   imports: [
     BrowserModule,
@@ -66,6 +67,10 @@ import {GoogleLoginProvider} from 'angularx-social-login';
     MatIconModule,
     MatSelectModule,
     ReactiveFormsModule,
+    MatMenuModule,
+    MatButtonModule,
+    FormsModule,
+    
     CoolSocialLoginButtonsModule,
     SocialLoginModule
   ],

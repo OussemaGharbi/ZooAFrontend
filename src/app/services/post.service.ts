@@ -52,23 +52,29 @@ export class PostService {
       catchError(this.handleError)
     );
   }
-  addPost(post: Post): Observable<any> {
-    return this.http.post<{post:Post}>(this.api + 'posts', {post:post}).pipe(
+  addPost(text,images): Observable<any> {
+    const postData = new FormData();
+    postData.append("description",text);
+    for (var i =0;i<images.length;i++) {
+    postData.append("images",images[i]);
+  }
+    return this.http.post(this.api + 'posts', postData).pipe(
       catchError(this.handleError)
     );
   }
  
 
   deletePost(id:string) : Observable<any>{
-    return this.http.delete(this.api + 'posts/'+id ).pipe(
+    return this.http.delete(this.api + 'posts/'+id).pipe(
       catchError(this.handleError)
     )
   }
-  updatePost(id :string,post:Post): Observable<any>{
-    return  this.http.put<{post:Post}>(this.api +'posts/' + id, {post:post}).pipe(
+  updatePost(id :string,description) : Observable<any>{
+    return  this.http.put(this.api +'posts/'+id,{description:description}).pipe(
       catchError(this.handleError)
     )
   }
+  
 
   //get All comments
 getAllComments(postid:string) : Observable<any>{
@@ -79,20 +85,20 @@ getAllComments(postid:string) : Observable<any>{
 
 
 // add comment
-  addComment(Post_id: string,text:string,comment:Comment): Observable<any>{
-    return this.http.post<{comment:Comment}>(this.api + 'posts/'+Post_id,{comment:comment}).pipe(
+  addComment(Post_id: string,text:string): Observable<any>{
+    return this.http.post(this.api + 'posts/'+Post_id+'/comment',{text:text}).pipe(
       catchError(this.handleError)
     )
   }
 
   deleteComment(Post_id:string,Comment_id:string) : Observable<any>{
-    return this.http.delete(this.api + 'posts/'+Post_id +'Comment/'+Comment_id).pipe(
+    return this.http.delete(this.api + 'posts/'+Post_id +'/Comment/'+Comment_id).pipe(
       catchError(this.handleError)
     )
   }
 
-  updateComment(Post_id :string,Comment_id:string,comment:Comment) : Observable<any>{
-    return this.http.put<{comment:Comment}>(this.api + 'posts/'+Post_id+'Comment/'+Comment_id,{comment:comment}).pipe(
+  updateComment(Post_id :string,Comment_id:string,text:string) : Observable<any>{
+    return this.http.put(this.api + 'posts/'+Post_id+'/Comment/'+Comment_id,{text:text}).pipe(
       catchError(this.handleError)
     )
   }
