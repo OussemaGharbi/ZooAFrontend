@@ -16,7 +16,14 @@
           <div class="pass"><a>Forgot Password?</a></div>
           <button type="submit">Login</button>
               <div class="google">
-                <cool-google-button color="dark" (click)="signInWithGoogle()"></cool-google-button>
+               <!--  <cool-google-button class="buttonGoogle"color="dark" (click)="signInWithGoogle()">Sign Up With Google</cool-google-button> -->
+                <!-- <div class="g-signin2" data-width="300" data-height="200" data-longtitle="true"></div> -->
+                <div class="google-btn" (click)="signInWithGoogle()">
+                  <div class="google-icon-wrapper">
+                  <img class="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/>
+                  </div>
+                  <p class="btn-text"><b>Sign in with google</b></p>
+                  </div>
               </div>
           <mat-error id="loginMessage" *ngIf="loginFailed">Login Failed</mat-error>
           <div class="signup_link">

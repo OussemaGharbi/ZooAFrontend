@@ -10,19 +10,25 @@ import { NewPostComponent } from '../post/new-post/new-post.component';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-
-  constructor(private popup:MatDialog,private authService: AuthService,private router: Router) { }
+  user: any;
+  isAuthenticated: boolean = false;
+  constructor(private popup:MatDialog,private router: Router,private authService:AuthService) { }
 
   ngOnInit(): void {
+    this.isAuthenticated = this.authService.isAuthenticated;
+    /* this.user=this.authService.getUser() */
   }
   
    openDialog(){
     if (!(this.authService.checkAuth())){
    const dialogRef=this.popup.open(NewPostComponent)
    dialogRef.afterClosed().subscribe(() => {
-     this.router.navigate([''])
-   })}
-
+     this.router.navigate(['']);
+   })
+  }
+  }
+  logout(){
+    this.authService.logout();
   }
 
 }
