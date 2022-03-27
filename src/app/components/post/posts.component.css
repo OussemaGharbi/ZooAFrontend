@@ -18,7 +18,7 @@
 
 
 .divCard{
-    border: none;
+    border :1px solid #2691d9;
     border-radius: 20px;
     background-color:rgb(207, 201, 201);
     box-shadow:1.3px 1.7px 1.5px rgba(0, 0, 0, 0.02),
@@ -30,7 +30,7 @@
 }
 .header {
 background-color:rgb(207, 201, 201);
-color :rgb(49, 44, 44);
+color :#2691d9;
 border-radius:20px;
 font-size:1.2em;
 font-family: Poppins;
@@ -38,14 +38,14 @@ font-family: Poppins;
 
 .body {
     background-color:rgb(207, 201, 201);
-    color :rgb(49, 44, 44);
+    color :#232425;
     border-radius:20px;
     font-size:1.2em;
     font-family: Poppins;
 }
 .footer {
     background-color:rgb(207, 201, 201);
-    color :rgb(49, 44, 44);
+    color :#2691d9;
     border-radius:20px;
     font-size:1.2em;
     font-family: Poppins;
@@ -56,8 +56,19 @@ font-family: Poppins;
     text-align:center;
     font-weight:bold;
     font-size:40px;
-    color:#c73c12;
+    color:#2691d9;
     
+}
+.postCardOut{
+    margin-top:20px;
+}
+.radius{
+    border: 1 solid #2691d9;
+}
+.userImage{
+    width:30px;
+    height:30px;
+    border: 1 solid #2691d9;
 }
 /* .intialDiv{
     border-radius:30px;
