@@ -15,14 +15,57 @@
     padding: 30px;
 }
 
-.dotted{
-    border-radius:50%;
-    background-color:white;
-    padding:0px;
-    box-shadow: 0px ;
+
+
+.divCard{
+    border: none;
+    border-radius: 20px;
+    background-color:rgb(207, 201, 201);
+    box-shadow:1.3px 1.7px 1.5px rgba(0, 0, 0, 0.02),
+                3.1px 4px 3.7px rgba(0, 0, 0, 0.028),
+                5.8px 7.5px 6.9px rgba(0, 0, 0, 0.035),
+                10.3px 13.4px 12.3px rgba(0, 0, 0, 0.042),
+                19.2px 25.1px 23px rgba(0, 0, 0, 0.05),
+                46px 60px 55px rgba(0, 0, 0, 0.07);
 }
-.dotted :hover{
-background-color:#8b3c3c;
-color:white;
-border-radius:50%;
+.header {
+background-color:rgb(207, 201, 201);
+color :rgb(49, 44, 44);
+border-radius:20px;
+font-size:1.2em;
+font-family: Poppins;
 }
+
+.body {
+    background-color:rgb(207, 201, 201);
+    color :rgb(49, 44, 44);
+    border-radius:20px;
+    font-size:1.2em;
+    font-family: Poppins;
+}
+.footer {
+    background-color:rgb(207, 201, 201);
+    color :rgb(49, 44, 44);
+    border-radius:20px;
+    font-size:1.2em;
+    font-family: Poppins;
+}
+
+.initialText{
+    margin-top:15%;
+    text-align:center;
+    font-weight:bold;
+    font-size:40px;
+    color:#c73c12;
+    
+}
+/* .intialDiv{
+    border-radius:30px;
+    background-color: aliceblue;
+    box-shadow:1.3px 1.7px 1.5px rgba(0, 0, 0, 0.02),
+    3.1px 4px 3.7px rgba(0, 0, 0, 0.028),
+    5.8px 7.5px 6.9px rgba(0, 0, 0, 0.035),
+    10.3px 13.4px 12.3px rgba(0, 0, 0, 0.042),
+    19.2px 25.1px 23px rgba(0, 0, 0, 0.05),
+    46px 60px 55px rgba(0, 0, 0, 0.07);
+} */

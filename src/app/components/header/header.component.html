@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg " style="background-color:#FF642E;height:15%" >
+<nav class="navbar navbar-expand-lg " style="background-color:#d8693e;height:15%" >
         <div class="container">
             <div class="navbar-translate">
                 <a class="navbar-brand" style="color : #ececec" routerLink="/">
@@ -30,7 +30,9 @@
                     </li>
                 </ul>
             </div>
-            <button mat-button color="primary" [routerLink]="['newPost']" (click)="openDialog()">Add Post</button>
+            <button [routerLink]="['newPost']" (click)="openDialog()">
+                <span class="material-icons-outlined addPost">add</span>
+            </button>
 
         </div>
     </nav>

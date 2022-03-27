@@ -25,6 +25,13 @@ export class AuthService {
   getAuthStatusListener(){
     return this.authStatusListener.asObservable();
   }
+  checkAuth(){
+    if (!(this.isAuthenticated))
+    {
+      this.router.navigate(['login'])
+    }
+    return false;
+    }
   signup(form:FormGroup){
     let success;
     console.log(form.value)

@@ -1,10 +1,20 @@
 <app-header></app-header>
+
+<div class="d-flex justify-content-center">
+    <div class="card divCard" style="width: 38rem;">
+        <div class="card-header header">
+            <div class="card-body body">
+                <h1 class="initialText" *ngIf="posts.length==0"> NOTHING TO SHOW YET!</h1>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="d-flex justify-content-center" *ngFor="let post of posts">
-    <div class="card" style="width: 38rem;">
-        <div class="card-header">
+    <div class="card divCard" style="width: 38rem;">
+        <div class="card-header header">
             <div class="row">
                 <div class="col-1 ">
-                    <img src="" alt="user">
+                    <img src="/assets/conversation.png" alt="user">
                 </div>
                 <div class="col">
                     <div><span> {{ post.user.fname }}</span><span> {{ post.user.lastname }}</span></div>
@@ -13,18 +23,8 @@
                         </span></div>
                 </div>
                 <div class="col-auto">
-                    <button [matMenuTriggerFor]="appMenu" class="dotted">
-                        <svg width="24" height="24" fill="none" viewBox="0 0 24 24">
-                            <path fill="currentColor"
-                                d="M13 12C13 12.5523 12.5523 13 12 13C11.4477 13 11 12.5523 11 12C11 11.4477 11.4477 11 12 11C12.5523 11 13 11.4477 13 12Z">
-                            </path>
-                            <path fill="currentColor"
-                                d="M9 12C9 12.5523 8.55228 13 8 13C7.44772 13 7 12.5523 7 12C7 11.4477 7.44772 11 8 11C8.55228 11 9 11.4477 9 12Z">
-                            </path>
-                            <path fill="currentColor"
-                                d="M17 12C17 12.5523 16.5523 13 16 13C15.4477 13 15 12.5523 15 12C15 11.4477 15.4477 11 16 11C16.5523 11 17 11.4477 17 12Z">
-                            </path>
-                        </svg>
+                    <button style="background-color: #d8693e;" [matMenuTriggerFor]="appMenu" >
+                        <span class="material-icons-sharp"style="font: size 20px;color: #fff;">pending</span>
                     </button>
                     <mat-menu #appMenu="matMenu">
                         <button mat-menu-item (click)="editPost(post['_id'],newDescription,validate,cancel)">Edit</button>
@@ -34,13 +34,14 @@
                 </div>
             </div>
         </div>
-        <div class="card-body">
+        <div class="card-body body">
             <div class="row">
                 <div #description *ngIf="showOldDescription" class="col-auto">{{ post['description'] }}</div>
                 <textarea #newDescription style="display:none"></textarea>
                 <button #validate (click)="validatePost(post['_id'],newDescription,validate,cancel)" style="display: none">valider</button>
                 <button #cancel (click)="cancelPostChanges(newDescription,validate,cancel)"  style="display: none">cancel</button>
             </div>
+            <hr>
             <div class="row">
                 <div class="col-sm-3" *ngFor="let image of post['images']">
                     <img src="{{ image }}" alt="post images " class="post">
@@ -57,22 +58,22 @@
                 <label style="float: right;margin-right: 10px;">{{ post['comments'].length }} comments</label>
             </div>
         </div>
-        <div class="card-footer">
+        <div class="card-footer footer" >
             <div class="row justify-content-center">
                 <div class="col-sm-3" style="text-align:center;">
-                    <button (click)="addlike(post['_id'])">
-                        <mat-icon class="shape blueColor">thumb_up</mat-icon>
+                    <button mat-icon-button color="warn"  (click)="addlike(post['_id'])">
+                        <span class="material-icons-outlined">favorite</span>
                     </button>
                 </div>
                 <div class="col-sm-3" style="text-align:center;">
                     <button mat-icon-button color="warn" aria-label="Example icon button with a heart icon"
                         [routerLink]="['showAllComments',post['_id']]" (click)="showSection(posts.indexOf(post))">
-                        <mat-icon class="shape blueColor">comment</mat-icon>
+                        <span class="material-icons-outlined">comment</span> 
                     </button>
                 </div>
                 <div class="col-sm-3" style="text-align:center;">
                     <button mat-icon-button color="warn" aria-label="Example icon button with a heart icon">
-                        <mat-icon class="shape blueColor">send</mat-icon>
+                        <span class="material-icons-outlined">send</span>
                     </button>
                 </div>
             </div>
