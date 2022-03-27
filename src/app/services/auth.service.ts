@@ -6,6 +6,7 @@ import { Subject } from 'rxjs';
 import { AuthData } from 'src/model/authData';
 import { SocialAuthService, SocialUser } from "angularx-social-login";
 import { GoogleLoginProvider } from "angularx-social-login";
+import {User} from "../../model/user";
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,7 @@ export class AuthService {
   isAuthenticated?: boolean;
   private userId:string;
   private user : SocialUser;
-  
+  private normalUser : User;
   constructor(private http:HttpClient,private router:Router,private googleAuthService:SocialAuthService) { }
   getUserId():string {
     return this.userId;
@@ -25,6 +26,18 @@ export class AuthService {
   getAuthStatusListener(){
     return this.authStatusListener.asObservable();
   }
+
+  getUser(){
+    if(this.user){
+      return this.user;
+    }
+    this.http.get<{user:User}>(`http://localhost:3000/api/users/${this.userId})`).subscribe(responce => {
+      this.normalUser=responce.user;
+
+    })
+    return this.normalUser;
+  }
+  
   signup(form:FormGroup){
     let success;
     console.log(form.value)

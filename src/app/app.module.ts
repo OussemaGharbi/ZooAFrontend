@@ -35,6 +35,7 @@ import { CoolSocialLoginButtonsModule } from '@angular-cool/social-login-buttons
 import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
 import {GoogleLoginProvider} from 'angularx-social-login';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import { CheckImagePipe } from './pipes/check-image.pipe';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     EditCommentComponent,
     ShowAllCommentsComponent,
     ShowCommentsDirective,
+    CheckImagePipe,
   ],
   imports: [
     BrowserModule,

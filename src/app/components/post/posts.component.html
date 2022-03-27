@@ -7,7 +7,7 @@
                     <img src="" alt="user">
                 </div>
                 <div class="col">
-                    <div><span> {{ post.user.fname }}</span><span> {{ post.user.lastname }}</span></div>
+                    <div *ngIf="post.user"><span> {{ post.user.fname }}</span><span> {{ post.user.lastname }}</span></div>
                     <div><span>
                             {{ post['date'] |date }}
                         </span></div>

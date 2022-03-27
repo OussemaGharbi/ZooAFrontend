@@ -30,3 +30,7 @@ mat-toolbar a{
     outline: none;
     transition: 0.3;
 }
+
+.img{
+    width: 8%;
+}
