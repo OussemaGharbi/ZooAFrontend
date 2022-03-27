@@ -29,11 +29,12 @@ import { EditCommentComponent } from './components/post/edit-comment/edit-commen
 import { ShowAllCommentsComponent } from './components/post/show-all-comments/show-all-comments.component';
 import { ShowCommentsDirective } from './directives/show-comments.directive';
 import { AuthInterceptor } from './auth-interceptor';
-import {MatMenuModule} from '@angular/material/menu'; 
+import {MatMenuModule} from '@angular/material/menu';
 import { MatButton, MatButtonModule } from '@angular/material/button';
 import { CoolSocialLoginButtonsModule } from '@angular-cool/social-login-buttons';
 import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
 import {GoogleLoginProvider} from 'angularx-social-login';
+import {MatToolbarModule} from '@angular/material/toolbar';
 
 @NgModule({
   declarations: [
@@ -70,9 +71,9 @@ import {GoogleLoginProvider} from 'angularx-social-login';
     MatMenuModule,
     MatButtonModule,
     FormsModule,
-    
+    MatToolbarModule,
     CoolSocialLoginButtonsModule,
-    SocialLoginModule
+    SocialLoginModule,
   ],
   providers: [
     VeterinaireService,

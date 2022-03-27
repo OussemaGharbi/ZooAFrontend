@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 import { NewPostComponent } from '../post/new-post/new-post.component';
 
 @Component({
@@ -10,9 +11,11 @@ import { NewPostComponent } from '../post/new-post/new-post.component';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private popup:MatDialog,private router: Router) { }
+  isAuthenticated: boolean = false;
+  constructor(private popup:MatDialog,private router: Router,private authService:AuthService) { }
 
   ngOnInit(): void {
+    this.isAuthenticated = this.authService.isAuthenticated;
   }
    openDialog(){
    const dialogRef=this.popup.open(NewPostComponent)

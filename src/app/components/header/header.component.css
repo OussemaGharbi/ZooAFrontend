@@ -1,0 +1,32 @@
+mat-toolbar{
+    background: #2691d9;
+    height:8%;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+    padding:0 6%;
+    margin-bottom: 1.3em;
+}
+mat-toolbar a{
+    color :#ececec;
+}
+.spacer{
+    flex:1 1 auto;
+}
+
+.addPost{
+    background-color:#ececec;
+    color:#2691d9;
+    border-radius: 10px;
+    font-size:0.9em;
+    margin-right: 1em;
+}
+.addPost:hover{
+
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: 2px solid white; 
+    color: white;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+    transition: 0.3;
+}
