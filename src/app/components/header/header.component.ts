@@ -18,18 +18,14 @@ export class HeaderComponent implements OnInit {
     this.isAuthenticated = this.authService.isAuthenticated;
     /* this.user=this.authService.getUser() */
   }
-    // authPass(){
-    //   if ((this.authService.isAuthenticated)){
-    //     this.router.navigate(['']);
-    //   }else{
-    //     this.openDialog();
-    //   }
-    // }
+   
    openDialog(){
+     this.authService.checkAuth()
+     if (this.isAuthenticated){
    const dialogRef=this.popup.open(NewPostComponent)
    dialogRef.afterClosed().subscribe(() => {
      this.router.navigate(['']);
-   })
+   })}
   }
   logout(){
     this.authService.logout();
