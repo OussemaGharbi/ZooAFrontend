@@ -36,6 +36,8 @@ import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-logi
 import {GoogleLoginProvider} from 'angularx-social-login';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { CheckImagePipe } from './pipes/check-image.pipe';
+import { ProfileComponent } from './components/profile/profile.component';
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -56,6 +58,7 @@ import { CheckImagePipe } from './pipes/check-image.pipe';
     ShowAllCommentsComponent,
     ShowCommentsDirective,
     CheckImagePipe,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -74,6 +77,7 @@ import { CheckImagePipe } from './pipes/check-image.pipe';
     MatButtonModule,
     FormsModule,
     MatToolbarModule,
+    MatCardModule,
     CoolSocialLoginButtonsModule,
     SocialLoginModule,
   ],

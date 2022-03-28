@@ -15,15 +15,17 @@ export class HeaderComponent implements OnInit {
   constructor(private popup:MatDialog,private router: Router,private authService:AuthService) { }
 
   ngOnInit(): void {
-    this.isAuthenticated = this.authService.isAuthenticated;
-    /* this.user=this.authService.getUser() */
+  this.isAuthenticated = this.authService.isAuthenticated;
+   this.user=this.authService.getUser();
   }
    openDialog(){
-   const dialogRef=this.popup.open(NewPostComponent)
-   dialogRef.afterClosed().subscribe(() => {
-     this.router.navigate(['']);
-   })
-
+     this.authService.checkAuth();
+     if(this.isAuthenticated){
+      const dialogRef=this.popup.open(NewPostComponent)
+      dialogRef.afterClosed().subscribe(() => {
+        this.router.navigate(['']);
+      })
+     }
   }
   logout(){
     this.authService.logout();

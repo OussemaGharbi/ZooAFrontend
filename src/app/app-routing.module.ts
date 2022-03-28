@@ -14,9 +14,11 @@ import { EditPostComponent } from './components/post/edit-post/edit-post.compone
 import { NewCommentComponent } from './components/post/new-comment/new-comment.component';
 import { EditCommentComponent } from './components/post/edit-comment/edit-comment.component';
 import { ShowAllCommentsComponent } from './components/post/show-all-comments/show-all-comments.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 
 const routes: Routes = [
+    {path:'profile', component:ProfileComponent},
     {path:'veterinaire', component:VeterinaireComponent},
     {path:'login', component:AuthComponent},
     {path:'signup', component:SignupComponent},
@@ -25,7 +27,7 @@ const routes: Routes = [
     {path:'takeAppointment', component:TakeAppointmentComponent},
     
   {
-    path: '', component: PostsComponent, children :[
+      path: '', component: PostsComponent, children :[
       {path:'newPost' , component:NewPostComponent},
       {path:'editPost/:id' , component:EditPostComponent},
       {path: 'showAllComments/:id', component: ShowAllCommentsComponent },

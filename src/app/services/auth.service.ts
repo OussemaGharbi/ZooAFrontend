@@ -15,7 +15,7 @@ export class AuthService {
   private token?: string;
   isAuthenticated?: boolean;
   private userId:string;
-  private user : SocialUser;
+  private user : User;
   private normalUser : User;
   constructor(private http:HttpClient,private router:Router,private googleAuthService:SocialAuthService) { }
   getUserId():string {
@@ -26,14 +26,20 @@ export class AuthService {
   getAuthStatusListener(){
     return this.authStatusListener.asObservable();
   }
+  checkAuth(){
+    if (!(this.isAuthenticated))
+    {
+      this.router.navigate(['login'])
+    }
+    return false;
+    }
 
   getUser(){
     if(this.user){
       return this.user;
     }
-    this.http.get<{user:User}>(`http://localhost:3000/api/users/${this.userId})`).subscribe(responce => {
+    this.http.get<{user:User}>(`http://localhost:3000/api/users/${this.userId}`).subscribe(responce => {
       this.normalUser=responce.user;
-
     })
     return this.normalUser;
   }
@@ -70,11 +76,13 @@ export class AuthService {
       if(this.token){
         this.setAuthTimer(response.expiresIn)
         this.isAuthenticated=true;
+        this.userId=response.userId;
+        console.log(this.userId);
         const now = new Date();
         const expirationDate = new Date(now.getTime() + response.expiresIn * 1000);
         this.saveAuthData(this.token,expirationDate)
         this.authStatusListener.next(true);
-        this.userId=response.userId;
+
         this.router.navigate(["/"]);
       }
 
@@ -86,8 +94,8 @@ export class AuthService {
     this.token="";
     this.isAuthenticated=false;
     this.authStatusListener.next(false)
-    this.clearAuthData()
-    this.router.navigate(["/"]);
+    this.clearAuthData();
+    this.router.navigate(["/login"]);
   }
 
   setAuthTimer(expiresIn:number){
@@ -114,19 +122,21 @@ export class AuthService {
   private saveAuthData(token:string, expirationDate:Date){
     localStorage.setItem("token",token);
     localStorage.setItem("expiration",expirationDate.toISOString());
+    localStorage.setItem("userId",this.userId);
     console.log(localStorage.getItem("token"));
     console.log(localStorage.getItem("expiration"))
   }
   
-
-  private clearAuthData(){
+private clearAuthData(){
     localStorage.removeItem("token");
-    localStorage.removeItem("expiration")
+    localStorage.removeItem("expiration");
+    localStorage.removeItem("userId");
   }
 
   private getAuthData(){
     const token = localStorage.getItem("token");
     const expirationDate = localStorage.getItem("expiration")
+    this.userId=localStorage.getItem("userId")
     if(!token || !expirationDate) return null;
     return {token:token,expirationDate:new Date(expirationDate)}
   }
@@ -139,18 +149,19 @@ export class AuthService {
   signInWithGoogle(): void {
     this.googleAuthService.signIn(GoogleLoginProvider.PROVIDER_ID);
     this.googleAuthService.authState.subscribe((user) => {
-      this.user = user;
       if(user){
         this.isAuthenticated = true;
         this.token=user.idToken;
         const date = new Date();
-        const expirationDate = date.getTime()+this.user.response.expires_in
+        const expirationDate = date.getTime()+user.response.expires_in
         this.saveAuthData(this.token,new Date(expirationDate));
-        this.setAuthTimer(this.user.response.expires_in);
-        console.log(this.user);
+        this.setAuthTimer(user.response.expires_in);
+        console.log(user);
         const newUser = {fname:user.name,lname:user.lastName,email:user.email,image:user.photoUrl,googleId:user.id}
-       this.http.post("http://localhost:3000/api/users/googleAuth",newUser).subscribe((response) => {
+       this.http.post<{message:string,user:User}>("http://localhost:3000/api/users/googleAuth",newUser).subscribe((response) => {
         console.log(response);
+        const user = response.user;
+        this.user=response.user;
         this.router.navigate(['']);
         },(error)=>{
           console.log(error);
