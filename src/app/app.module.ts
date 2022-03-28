@@ -23,9 +23,6 @@ import { TakeAppointmentComponent } from './components/take-appointment/take-app
 import {MatSelectModule} from '@angular/material/select';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NewPostComponent } from './components/post/new-post/new-post.component';
-import { EditPostComponent } from './components/post/edit-post/edit-post.component';
-import { NewCommentComponent } from './components/post/new-comment/new-comment.component';
-import { EditCommentComponent } from './components/post/edit-comment/edit-comment.component';
 import { ShowAllCommentsComponent } from './components/post/show-all-comments/show-all-comments.component';
 import { ShowCommentsDirective } from './directives/show-comments.directive';
 import { AuthInterceptor } from './auth-interceptor';
@@ -52,9 +49,6 @@ import {MatCardModule} from '@angular/material/card';
     SignupComponent,
     TakeAppointmentComponent,
     NewPostComponent,
-    EditPostComponent,
-    NewCommentComponent,
-    EditCommentComponent,
     ShowAllCommentsComponent,
     ShowCommentsDirective,
     CheckImagePipe,

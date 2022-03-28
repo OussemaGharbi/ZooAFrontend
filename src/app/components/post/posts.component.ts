@@ -18,7 +18,6 @@ images :any
 comments : any 
 likes : any
 
-isAuthenticated :boolean
 userid :string
 likeid :string
 idpost :string
@@ -38,20 +37,14 @@ showOldDescription:boolean = true
       this.images=this.posts['image']
       this.comments=this.posts['comments']
       this.likes=this.posts['likes']
-      this.isAuthenticated= this.authService.isAuthenticated
       this.showComments= this.posts.map(post => false)
       
     });
   }
   
-checkAuth(){
-if (!(this.isAuthenticated))
-{
-  this.router.navigate(['login'])
-}
-}
+
   addlike(postid){
-    this.checkAuth()
+    this.authService.checkAuth()
     this.postService.addLike(postid).subscribe(resultat=>{
       this.nbrlikes=resultat.likes.length
       this.posts=this.posts.map(post=>{
@@ -66,7 +59,7 @@ if (!(this.isAuthenticated))
   }
 
   showSection(index) {
-    this.checkAuth();
+    this.authService.checkAuth()
     this.showComments=this.posts.map(comment => false)      
     this.showComments[index]=true
     this.idpost=this.posts[index]._id
@@ -74,6 +67,7 @@ if (!(this.isAuthenticated))
   }
 
   delete(idpost){
+    this.authService.checkAuth()
     this.postService.deletePost(idpost).subscribe(result =>{
       this.posts=this.posts.filter(post =>{
         return post._id!=result._id
@@ -82,6 +76,7 @@ if (!(this.isAuthenticated))
   }
   
   cancelPostChanges(newDescription,validate,cancel) {
+
     newDescription.style.display = "none"
     cancel.style.display = "none"
     validate.style.display = "none"
@@ -89,6 +84,8 @@ if (!(this.isAuthenticated))
     
   }
   validatePost(pid,newDescription,validate,cancel) {
+    this.authService.checkAuth()
+
     this.postService.updatePost(pid,newDescription.value).subscribe(resultat => {
       console.log(resultat)
       newDescription.style.display = "none"
@@ -107,6 +104,7 @@ if (!(this.isAuthenticated))
   }
 
   editPost(idpost: string, newDescription, cancel, validate) {
+    this.authService.checkAuth()
     const post = this.posts.find(post => {
       return post._id == idpost
     })
