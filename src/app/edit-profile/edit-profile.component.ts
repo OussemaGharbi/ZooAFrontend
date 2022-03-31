@@ -30,14 +30,12 @@ export class EditProfileComponent implements OnInit {
     this.authService.getUser().subscribe(user => {
       this.user=user.user;
       console.log(this.user);
-    });
-    
+    }); 
   }
 
   onImagePicked(imageInput: any) {
     const file : File = imageInput.files[0];
     this.profileForm.patchValue({image: file});
-
 }
   onSubmit(){
     if(this.profileForm.valid){
