@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { AppointmentComponent } from './components/appointment/appointment.component';
 import { VeterinaireComponent } from './components/veterinaire/veterinaire.component';
-
 import { AuthComponent } from './components/auth/auth.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { AuthGuard } from './services/auth.guard';
@@ -12,16 +11,17 @@ import { TakeAppointmentComponent } from './components/take-appointment/take-app
 import { NewPostComponent } from './components/post/new-post/new-post.component';
 import { ShowAllCommentsComponent } from './components/post/show-all-comments/show-all-comments.component';
 import { ProfileComponent } from './components/profile/profile.component';
-
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
 
 const routes: Routes = [
-    {path:'profile', component:ProfileComponent},
     {path:'veterinaire', component:VeterinaireComponent},
     {path:'login', component:AuthComponent},
     {path:'signup', component:SignupComponent},
     {path:'appointments/:id', component:AppointmentComponent},
     {path:'', component:PostsComponent},
     {path:'takeAppointment', component:TakeAppointmentComponent},
+    {path:'profile', component:ProfileComponent},
+    {path:'profile/edit' , component:EditProfileComponent},
     
   {
       path: '', component: PostsComponent, children :[

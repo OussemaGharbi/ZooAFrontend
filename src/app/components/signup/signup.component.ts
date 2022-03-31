@@ -26,8 +26,5 @@ export class SignupComponent implements OnInit {
     if(this.registerForm.valid){
       this.success=this.authService.signup(this.registerForm)
     }
-
-
   }
-
 }
