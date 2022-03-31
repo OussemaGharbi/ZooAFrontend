@@ -48,6 +48,7 @@ export class ShowAllCommentsComponent implements OnInit {
       console.log(resultat);
       console.log(comment)
       this.comments.push(resultat)
+      this.router.navigate([''])
     })
   }
   deleteComment(idcomment: string) {

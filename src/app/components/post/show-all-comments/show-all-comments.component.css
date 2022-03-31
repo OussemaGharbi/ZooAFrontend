@@ -11,19 +11,13 @@ li{
     border-radius: 20px; 
 }
 
-.img{
-    border-radius:50%;
-    
+img{
+    border-radius:50%; 
 }
-.dotted{
-    border-radius:50%;
-    background-color:white;
-    padding:0px;
-    box-shadow: 0px ;
-}
-.dotted :hover{
-background-color:#8b3c3c;
-color:white;
-border-radius:50%;
 
+
+.userImage{
+    width:30px;
+    height:30px;
+    border: 1 solid #2691d9;
 }

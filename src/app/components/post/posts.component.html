@@ -4,7 +4,7 @@
     <div class="card divCard" style="width: 38rem;">
         <div class="card-header header">
             <div class="card-body body">
-                <h1 class="initialText" > NOTHING TO SHOW YET!</h1>
+                <h1 class="initialText"> NOTHING TO SHOW YET!</h1>
             </div>
         </div>
     </div>
@@ -14,18 +14,21 @@
         <div class="card-header header">
             <div class="row">
                 <div class="col-1 radius">
-                    <img src="/assets/conversation.png" class="userImage" alt="user">
+                    <img src="/assets/images/avatar.png" class="userImage" alt="user">
                 </div>
                 <div class="col">
-                    <div *ngIf="post.user"><span> {{ post.user.fname }}</span><span> {{ post.user.lname }}</span></div>
-                    <div><span>
-                            {{ post['date'] |date }}
-                        </span></div>
+                    <div *ngIf="post.user">
+                        <span class="material-icons"style="font-size:15px">person</span>
+                        <span style="color:#350e35;font-size: 20px;"> {{ post.user['fname'] }} {{ post.user['lname'] }}</span>
+                    </div>
+                    <div>
+                        <span class="material-icons" style="font-size:12px">calendar_today</span>
+                        <span style="color:#424042;font-size: 13px;"> .{{ post['date'] |date }}</span>
+                    </div>
                 </div>
                 <div class="col-auto">
-                    <button style="background-color:transparent;" [matMenuTriggerFor]="appMenu" >
-                        <span class="material-icons"style="font: size 20px;">more_horiz</span>
-                    </button>
+                   
+                        <span [matMenuTriggerFor]="appMenu" class="material-icons" style="cursor:pointer;">more_horiz</span>
                     <mat-menu #appMenu="matMenu">
                         <button mat-menu-item (click)="editPost(post['_id'],newDescription,validate,cancel)">Edit</button>
                         <button mat-menu-item (click)="delete(post['_id'])">Delete</button>
@@ -52,10 +55,12 @@
           
           
       <div class="col-sm" style="margin-left: 10px">
-                <label>{{ post['likes']?.length }} people likes</label>
+                <label><a routerLink="/">{{ post['likes'].length }} people likes</a></label>
             </div>
             <div class="col-sm">
-                <label style="float: right;margin-right: 10px;">{{ post['comments'].length }} comments</label>
+                <label style="float: right;margin-right: 10px;">
+                    <a [routerLink]="['showAllComments',post['_id']]" (click)="showSection(posts.indexOf(post))">{{ post['comments'].length }} comments</a>
+                </label>
             </div>
         </div>
         <div class="card-footer footer" >
