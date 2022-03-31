@@ -4,6 +4,7 @@ import { Like } from 'src/model/like';
 import { Post } from 'src/model/post';
 import { PostService } from '../../services/post.service';
 import { AuthService } from 'src/app/services/auth.service';
+import { User } from 'src/model/user';
 
 @Component({
   selector: 'app-posts',
@@ -17,7 +18,7 @@ like :Like[]
 images :any
 comments : any 
 likes : any
-
+user:User;
 userid :string
 likeid :string
 idpost :string

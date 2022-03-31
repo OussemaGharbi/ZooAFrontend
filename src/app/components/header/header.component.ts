@@ -20,14 +20,6 @@ export class HeaderComponent implements OnInit {
   }
    
    openDialog(){
-<<<<<<< HEAD
-     this.authService.checkAuth()
-     if (this.isAuthenticated){
-   const dialogRef=this.popup.open(NewPostComponent)
-   dialogRef.afterClosed().subscribe(() => {
-     this.router.navigate(['']);
-   })}
-=======
      this.authService.checkAuth();
      if(this.isAuthenticated){
       const dialogRef=this.popup.open(NewPostComponent)
@@ -35,7 +27,6 @@ export class HeaderComponent implements OnInit {
         this.router.navigate(['']);
       })
      }
->>>>>>> 43bd54d2346521c6e0860f8638f3db38e6fb69ab
   }
   logout(){
     this.authService.logout();
