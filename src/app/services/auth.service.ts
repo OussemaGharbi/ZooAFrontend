@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { FormGroup, NgForm } from '@angular/forms';
+import { Form, FormGroup, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { AuthData } from 'src/model/authData';
@@ -37,15 +37,20 @@ export class AuthService {
     return this.http.get<{user:User}>(`http://localhost:3000/api/users/${this.userId}`);
   }
 
-  updateUser(form:User){
+  updateUser(form:any){
     let user;
+    
     if(form.image){
       user = new FormData()
       for(let field in form){
         if (form[field].length>1){
+          
           user.append(field,form[field])
         }
       }
+      user.append("image",form.image)
+      console.log("user with image")
+      console.log(user.get("image"));
     }else{
       user = {}
       for(let field in form){
@@ -53,9 +58,13 @@ export class AuthService {
           user[field] = form[field];
         }
       }
+      console.log("user without image")
+      console.log(user);
     }
-
-    return this.http.put<{user:User}>(`http://localhost:3000/api/users/${this.userId}`,{user:user});
+/*     if(user.birthdate){
+      user.birthdate = new Date(user.birthdate);
+    } */
+    return this.http.put<{user:any}>(`http://localhost:3000/api/users/${this.userId}`,user);
   }
   
   signup(form:FormGroup){

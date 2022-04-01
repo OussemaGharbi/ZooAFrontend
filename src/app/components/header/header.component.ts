@@ -16,7 +16,9 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
   this.isAuthenticated = this.authService.isAuthenticated;
-   this.user=this.authService.getUser();
+   this.authService.getUser().subscribe(user => {
+    this.user=user.user;
+   });
   }
    
    openDialog(){
