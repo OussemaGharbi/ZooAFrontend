@@ -9,7 +9,8 @@ import { User } from 'src/model/user';
 @Component({
   selector: 'app-posts',
   templateUrl: './posts.component.html',
-  styleUrls: ['./posts.component.css']
+  styleUrls: ['./posts.component.css'],
+  
 })
 export class PostsComponent implements OnInit {
 posts :Post []
@@ -39,13 +40,15 @@ showOldDescription:boolean = true
     this.postService.getPosts().subscribe(resultat=>{
       this.posts = resultat as Post[];
       this.posts['id']
-      this.images=this.posts['image']
       this.comments=this.posts['comments']
       this.likes=this.posts['likes']
       this.showComments= this.posts.map(post => false)
       
+      
     });
   }
+ 
+  
   
 
   addlike(postid){

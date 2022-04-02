@@ -1,6 +1,6 @@
 <app-header></app-header>
 
-<div class="d-flex justify-content-center" *ngIf="posts.length==0">
+<div class="d-flex justify-content-center" *ngIf="!(posts) || posts?.length == 0">
     <div class="card divCard" style="width: 38rem;">
         <div class="card-header header">
             <div class="card-body body">
@@ -48,6 +48,7 @@
             <div class="row">
                 <div class="col-sm-3" *ngFor="let image of post['images']">
                     <img src="{{ image }}" alt="post images " class="post">
+
                 </div>
             </div>
         </div>

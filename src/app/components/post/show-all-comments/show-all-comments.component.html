@@ -3,10 +3,10 @@
         <div class="col-1 img" >
             <img src="/assets/images/avatar.png" class="userImage" alt="user">
         </div>
-        <div class="col-auto" style="width:450px">
-            <input type="text" #comment class="form-control" style="border:none;" placeholder="Leave comment here...">
+        <div class="col-auto">
+            <input type="text" #comment class="commentField" placeholder="Leave comment here...">
         </div>
-        <div class="col" style="width: 20px;height:20px;">
+        <div class="col send">
                 <span (click)="addComment(comment.value)" class="material-icons" style="cursor: pointer;">
                     arrow_forward
                 </span> 
@@ -23,19 +23,17 @@
         <div class="col-sm-auto comment">
             <input type="text" name="newComment" value="" #newComment style="display:none;">
             <div>
-                <label style="color:#424042;font-size: 10px;" *ngIf="comment['user']">{{ comment.user['fname'] }} {{ comment.user['lname'] }}</label>
+                <label style="color:#424042;font-size: 15px;" *ngIf="comment['user']">{{ comment.user['fname'] }} {{ comment.user['lname'] }}</label>
             </div>
             <li *ngIf="showOldComment"> {{ comment['text'] }} </li>
-            <button style="display:none;" #cancel
-                (click)="cancelchanges(newComment,cancel,validateLink)">Cancel</button>
-            <button #validateLink style="display:none;"
-                (click)="validate(newComment,comment['_id'],cancel,validateLink)">Update</button>
+            <button style="display:none;" #cancel (click)="cancelchanges(newComment,cancel,validateLink)">Cancel</button>
+            <button #validateLink style="display:none;"(click)="validate(newComment,comment['_id'],cancel,validateLink)">Update</button>
         </div>
         <div class="col">
             <span [matMenuTriggerFor]="appMenu" class="material-icons" style="cursor:pointer;">more_horiz</span>
             <mat-menu #appMenu="matMenu">
-                <button mat-menu-item (click)="editComment(comment['_id'],newComment,cancel,validateLink)">Edit</button>
-                <button mat-menu-item (click)="deleteComment(comment['_id'])">Delete</button>
+                <button mat-menu-item *ngIf="comment.user==user._id"  (click)="editComment(comment['_id'],newComment,cancel,validateLink)">Edit</button>
+                <button mat-menu-item *ngIf="comment.user==user._id" (click)="deleteComment(comment['_id'])">Delete</button>
                 <button mat-menu-item>report</button>
 
             </mat-menu>
