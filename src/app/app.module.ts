@@ -35,6 +35,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import { CheckImagePipe } from './pipes/check-image.pipe';
 import { ProfileComponent } from './components/profile/profile.component';
 import {MatCardModule} from '@angular/material/card';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import {MatCardModule} from '@angular/material/card';
     ShowCommentsDirective,
     CheckImagePipe,
     ProfileComponent,
+    EditProfileComponent,
   ],
   imports: [
     BrowserModule,

@@ -16,7 +16,6 @@ export class AuthService {
   isAuthenticated?: boolean;
   private userId:string;
   private user : User;
-  private normalUser : User;
   constructor(private http:HttpClient,private router:Router,private googleAuthService:SocialAuthService) { }
   getUserId():string {
     return this.userId;
@@ -35,13 +34,28 @@ export class AuthService {
     }
 
   getUser(){
-    if(this.user){
-      return this.user;
+    return this.http.get<{user:User}>(`http://localhost:3000/api/users/${this.userId}`);
+  }
+
+  updateUser(form:User){
+    let user;
+    if(form.image){
+      user = new FormData()
+      for(let field in form){
+        if (form[field].length>1){
+          user.append(field,form[field])
+        }
+      }
+    }else{
+      user = {}
+      for(let field in form){
+        if (form[field].length>1){
+          user[field] = form[field];
+        }
+      }
     }
-    this.http.get<{user:User}>(`http://localhost:3000/api/users/${this.userId}`).subscribe(responce => {
-      this.normalUser=responce.user;
-    })
-    return this.normalUser;
+
+    return this.http.put<{user:User}>(`http://localhost:3000/api/users/${this.userId}`,{user:user});
   }
   
   signup(form:FormGroup){
@@ -62,7 +76,6 @@ export class AuthService {
       }
       success=true
       this.router.navigate(["/login"])
-
     })
     return success;
   }
@@ -82,7 +95,9 @@ export class AuthService {
         const expirationDate = new Date(now.getTime() + response.expiresIn * 1000);
         this.saveAuthData(this.token,expirationDate)
         this.authStatusListener.next(true);
-
+        this.http.get<{user:User}>(`http://localhost:3000/api/users/${this.userId}`).subscribe(responce => {
+          this.user=responce.user;
+        })
         this.router.navigate(["/"]);
       }
 
@@ -95,6 +110,7 @@ export class AuthService {
     this.isAuthenticated=false;
     this.authStatusListener.next(false)
     this.clearAuthData();
+
     this.router.navigate(["/login"]);
   }
 
@@ -116,6 +132,7 @@ export class AuthService {
       this.isAuthenticated=true;
       this.setAuthTimer(expiresIn/1000)
       this.authStatusListener.next(true);
+
     }
   }
 

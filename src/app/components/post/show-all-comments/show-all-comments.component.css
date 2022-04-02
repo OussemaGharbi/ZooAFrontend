@@ -1,5 +1,8 @@
 li{ 
     list-style-type: none;   
+    color: black;
+    font-size:12px;
+    font-family: Poppins;
 }
 
   .comment{
@@ -13,6 +16,30 @@ li{
 
 img{
     border-radius:50%; 
+}
+.commentField{
+    border:none;
+    border-color: #ddeaff;
+    border-bottom: 1px solid #2691d9;
+    color: black;
+    font-size:15px;
+    font-family: Poppins;
+    display:flex;
+    width:450px; 
+}
+.commentField:focus{
+    outline: none;
+    border-color: #ddeaff;
+    border-bottom: 1px solid #2691d9;
+    color: black;
+    font-size:15px;
+    font-family: Poppins;
+    display:flex;
+    width:450px; 
+}
+.send{
+    width: 20px;
+    height:20px;
 }
 
 

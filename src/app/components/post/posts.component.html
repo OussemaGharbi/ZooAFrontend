@@ -1,4 +1,5 @@
 <app-header></app-header>
+<<<<<<< HEAD
 <div *ngIf="posts.length < 1">
     <div class="d-flex justify-content-center">
         <div class="card divCard" style="width: 38rem;">
@@ -6,6 +7,14 @@
                 <div class="card-body body">
                     <h1 class="initialText"> NOTHING TO SHOW YET!</h1>
                 </div>
+=======
+
+<div class="d-flex justify-content-center" *ngIf="!(posts) || posts?.length == 0">
+    <div class="card divCard" style="width: 38rem;">
+        <div class="card-header header">
+            <div class="card-body body">
+                <h1 class="initialText"> NOTHING TO SHOW YET!</h1>
+>>>>>>> zineddine
             </div>
         </div>
     </div>
@@ -31,8 +40,8 @@
                    
                         <span [matMenuTriggerFor]="appMenu" class="material-icons" style="cursor:pointer;">more_horiz</span>
                     <mat-menu #appMenu="matMenu">
-                        <button mat-menu-item  (click)="editPost(post['_id'],newDescription,validate,cancel)">Edit</button>
-                        <button mat-menu-item  (click)="delete(post['_id'])">Delete</button>
+                        <button mat-menu-item *ngIf="post.user['_id']==user._id" (click)="editPost(post['_id'],newDescription,validate,cancel)">Edit</button>
+                        <button mat-menu-item *ngIf="post.user['_id']==user._id" (click)="delete(post['_id'])">Delete</button>
                         <button mat-menu-item>Report</button>
                     </mat-menu>
                 </div>
@@ -49,6 +58,7 @@
             <div class="row">
                 <div class="col-sm-3" *ngFor="let image of post['images']">
                     <img src="{{ image }}" alt="post images " class="post">
+
                 </div>
             </div>
         </div>
@@ -56,7 +66,7 @@
           
           
       <div class="col-sm" style="margin-left: 10px">
-                <label><a href="#">{{ post['likes'].length }} people likes</a></label>
+                <label><a routerLink="/">{{ post['likes'].length }} people likes</a></label>
             </div>
             <div class="col-sm">
                 <label style="float: right;margin-right: 10px;">
