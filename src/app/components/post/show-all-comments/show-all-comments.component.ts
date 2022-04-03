@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { PostService } from 'src/app/services/post.service';
 import { Post } from 'src/model/post';
+import { User } from 'src/model/user';
 
 @Component({
   selector: 'app-show-all-comments',
@@ -18,13 +19,17 @@ export class ShowAllCommentsComponent implements OnInit {
   idpost: string
   text: string
   showOldComment: boolean = true
-
+  user:User
   constructor(private postService: PostService,
     private authService: AuthService,
     private router: Router,
     private activatedRoute: ActivatedRoute,) { }
 
   ngOnInit(): void {
+    this.authService.getUser().subscribe(user => {
+      this.user=user.user;
+      console.log(this.user);
+    });
     this.activatedRoute.params.subscribe({
       next: param => {
         this.idpost = param['id'];
@@ -37,7 +42,7 @@ export class ShowAllCommentsComponent implements OnInit {
   }
   showPostComments(postid: string) {
     this.postService.getAllComments(postid).subscribe(resultat => {
-      this.comments = resultat as Comment[];
+      this.comments = resultat
       console.log(resultat)
       this.extractUserImage()
     })
@@ -72,6 +77,7 @@ export class ShowAllCommentsComponent implements OnInit {
       cancel.style.display = "none"
       validateLink.style.display = "none"
       this.showOldComment = true
+      console.log(this.idpost, idcomment)
     })
 
   }
