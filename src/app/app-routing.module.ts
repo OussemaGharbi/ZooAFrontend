@@ -22,6 +22,7 @@ const routes: Routes = [
     {path:'takeAppointment', component:TakeAppointmentComponent},
     {path:'profile', component:ProfileComponent},
     {path:'profile/edit' , component:EditProfileComponent},
+    {path:'profile/:id', component:ProfileComponent},
     
   {
       path: '', component: PostsComponent, children :[

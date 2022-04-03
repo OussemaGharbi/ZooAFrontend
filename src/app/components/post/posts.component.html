@@ -1,6 +1,6 @@
 <app-header></app-header>
 
-<div class="d-flex justify-content-center" *ngIf="posts.length==0">
+<div class="d-flex justify-content-center" *ngIf="posts?.length==0">
     <div class="card divCard" style="width: 38rem;">
         <div class="card-header header">
             <div class="card-body body">
@@ -9,17 +9,20 @@
         </div>
     </div>
 </div>
-<div class="d-flex justify-content-center postCardOut" *ngFor="let post of posts">
+
+<cdk-virtual-scroll-viewport itemSize="500" style="height:700px">
+<div class="d-flex justify-content-center postCardOut" *cdkVirtualFor="let post of posts">
     <div class="card divCard" style="width: 38rem;">
         <div class="card-header header">
             <div class="row">
                 <div class="col-1 radius">
-                    <img src="/assets/images/avatar.png" class="userImage" alt="user">
+                    <img src="{{post.user.image | checkImage}}" class="userImage" alt="user" routerLink="/profile/{{post.user._id}}">
                 </div>
                 <div class="col">
                     <div *ngIf="post.user">
-                        <span class="material-icons"style="font-size:15px">person</span>
-                        <span style="color:#350e35;font-size: 20px;"> {{ post.user['fname'] }} {{ post.user['lname'] }}</span>
+                        <span class="material-icons" style="font-size:15px">person</span>
+                        <span class="clickable" style="color:#350e35;font-size: 20px;" routerLink="/profile/{{post.user._id}}"> {{ post.user['fname'] }} {{ post.user['lname']
+                            }}</span>
                     </div>
                     <div>
                         <span class="material-icons" style="font-size:12px">calendar_today</span>
@@ -27,10 +30,11 @@
                     </div>
                 </div>
                 <div class="col-auto">
-                   
-                        <span [matMenuTriggerFor]="appMenu" class="material-icons" style="cursor:pointer;">more_horiz</span>
+
+                    <span [matMenuTriggerFor]="appMenu" class="material-icons" style="cursor:pointer;">more_horiz</span>
                     <mat-menu #appMenu="matMenu">
-                        <button mat-menu-item (click)="editPost(post['_id'],newDescription,validate,cancel)">Edit</button>
+                        <button mat-menu-item
+                            (click)="editPost(post['_id'],newDescription,validate,cancel)">Edit</button>
                         <button mat-menu-item (click)="delete(post['_id'])">Delete</button>
                         <button mat-menu-item>Report</button>
                     </mat-menu>
@@ -41,8 +45,10 @@
             <div class="row">
                 <div #description *ngIf="showOldDescription" class="col-auto">{{ post['description'] }}</div>
                 <textarea #newDescription style="display:none"></textarea>
-                <button #validate (click)="validatePost(post['_id'],newDescription,validate,cancel)" style="display: none">valider</button>
-                <button #cancel (click)="cancelPostChanges(newDescription,validate,cancel)"  style="display: none">cancel</button>
+                <button #validate (click)="validatePost(post['_id'],newDescription,validate,cancel)"
+                    style="display: none">valider</button>
+                <button #cancel (click)="cancelPostChanges(newDescription,validate,cancel)"
+                    style="display: none">cancel</button>
             </div>
             <hr>
             <div class="row">
@@ -52,28 +58,29 @@
             </div>
         </div>
         <div class="row">
-          
-          
-      <div class="col-sm" style="margin-left: 10px">
-                <label><a routerLink="/">{{ post['likes'].length }} people likes</a></label>
+
+
+            <div class="col-sm" style="margin-left: 10px">
+                <label><a routerLink="/">{{ post['likes']?.length }} people likes</a></label>
             </div>
             <div class="col-sm">
                 <label style="float: right;margin-right: 10px;">
-                    <a [routerLink]="['showAllComments',post['_id']]" (click)="showSection(posts.indexOf(post))">{{ post['comments'].length }} comments</a>
+                    <a [routerLink]="['showAllComments',post['_id']]" (click)="showSection(posts.indexOf(post))">{{
+                        post['comments']?.length }} comments</a>
                 </label>
             </div>
         </div>
-        <div class="card-footer footer" >
+        <div class="card-footer footer">
             <div class="row justify-content-center">
                 <div class="col-sm-3" style="text-align:center;">
-                    <button mat-icon-button   (click)="addlike(post['_id'])">
+                    <button mat-icon-button (click)="addlike(post['_id'])">
                         <span class="material-icons-outlined">favorite</span>
                     </button>
                 </div>
                 <div class="col-sm-3" style="text-align:center;">
-                    <button mat-icon-button  aria-label="Example icon button with a heart icon"
+                    <button mat-icon-button aria-label="Example icon button with a heart icon"
                         [routerLink]="['showAllComments',post['_id']]" (click)="showSection(posts.indexOf(post))">
-                        <span class="material-icons-outlined">comment</span> 
+                        <span class="material-icons-outlined">comment</span>
                     </button>
                 </div>
                 <div class="col-sm-3" style="text-align:center;">
@@ -92,3 +99,4 @@
         </div>
     </div>
 </div>
+</cdk-virtual-scroll-viewport>

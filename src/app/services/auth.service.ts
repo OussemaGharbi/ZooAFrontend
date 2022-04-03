@@ -36,6 +36,9 @@ export class AuthService {
   getUser(){
     return this.http.get<{user:User}>(`http://localhost:3000/api/users/${this.userId}`);
   }
+  getUserById(id:any){
+    return this.http.get<{user:User}>(`http://localhost:3000/api/users/${id}`);
+  }
 
   updateUser(form:any){
     let user;
