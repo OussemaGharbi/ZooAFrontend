@@ -20,6 +20,7 @@ export class EditProfileComponent implements OnInit {
   });
 
   user:User;
+  imagePreview:string;
   constructor(private authService:AuthService,public router:Router) {
 
    }
@@ -32,10 +33,16 @@ export class EditProfileComponent implements OnInit {
     }); 
   }
 
-  onImagePicked(imageInput: any) {
+  onImagePicked(imageInput: any,image:any) {
     const file : File = imageInput.files[0];
     this.profileForm.patchValue({image: file});
     console.log(file);
+    const reader = new FileReader();
+    reader.onload = () =>{
+      this.imagePreview=reader.result as string;
+      image.src = reader.result;
+    };
+    reader.readAsDataURL(file);
 }
   onSubmit(){
     if(!this.profileForm.invalid){

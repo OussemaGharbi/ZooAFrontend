@@ -11,8 +11,8 @@ import { User } from 'src/model/user';
 export class ProfileComponent implements OnInit {
 
   user:User; 
-  id:any; //id got from the params
-  userId:any//id of the user connected
+  id:string; //id got from the params
+  userId:string//id of the user connected
   constructor(private authService:AuthService,private route:ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -29,6 +29,8 @@ export class ProfileComponent implements OnInit {
   
         this.authService.getUser().subscribe(user => {
           this.user=user.user;
+          this.userId=user.user._id;
+          this.id=user.user._id;
           console.log(this.user);
         });
       }

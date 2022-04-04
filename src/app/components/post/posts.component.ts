@@ -48,9 +48,6 @@ showOldDescription:boolean = true
     });
   }
  
-  
-  
-
   addlike(postid){
     this.authService.checkAuth()
     this.postService.addLike(postid).subscribe(resultat=>{

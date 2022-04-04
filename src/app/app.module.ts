@@ -37,6 +37,8 @@ import { ProfileComponent } from './components/profile/profile.component';
 import {MatCardModule} from '@angular/material/card';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { ScrollingModule } from '@angular/cdk/scrolling';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { FilterPipe } from './filter.pipe';
 
 @NgModule({
   declarations: [
@@ -56,6 +58,7 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
     CheckImagePipe,
     ProfileComponent,
     EditProfileComponent,
+    FilterPipe,
   ],
   imports: [
     BrowserModule,
@@ -77,7 +80,8 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
     MatCardModule,
     CoolSocialLoginButtonsModule,
     SocialLoginModule,
-    ScrollingModule
+    ScrollingModule,
+    MatAutocompleteModule
   ],
   providers: [
     VeterinaireService,

@@ -32,9 +32,15 @@ export class AuthService {
     }
     return false;
     }
+    getAllUsers(){
+      return this.http.get<User[]>(`http://localhost:3000/api/users`);
+    }
 
   getUser(){
     return this.http.get<{user:User}>(`http://localhost:3000/api/users/${this.userId}`);
+  }
+  getUserByName(name:string){
+    return this.http.get<{users:any[]}>(`http://localhost:3000/api/users/search?name=${name}`)
   }
   getUserById(id:any){
     return this.http.get<{user:User}>(`http://localhost:3000/api/users/${id}`);

@@ -15,12 +15,12 @@
         <div class="card-header header">
             <div class="row">
                 <div class="col-1 radius">
-                    <img src="{{post.user.image | checkImage}}" class="userImage" alt="user" routerLink="/profile/{{post.user._id}}">
+                    <img src="{{post.user?.image | checkImage}}" class="userImage" alt="user" routerLink="/profile/{{post.user?._id}}">
                 </div>
                 <div class="col">
                     <div *ngIf="post.user">
                         <span class="material-icons" style="font-size:15px">person</span>
-                        <span class="clickable" style="color:#350e35;font-size: 20px;" routerLink="/profile/{{post.user._id}}"> {{ post.user['fname'] }} {{ post.user['lname']
+                        <span class="clickable" style="color:#350e35;font-size: 20px;" routerLink="/profile/{{post.user?._id}}"> {{ post.user['fname'] }} {{ post.user['lname']
                             }}</span>
                     </div>
                     <div>
@@ -32,8 +32,8 @@
 
                     <span [matMenuTriggerFor]="appMenu" class="material-icons" style="cursor:pointer;">more_horiz</span>
                     <mat-menu #appMenu="matMenu">
-                        <button mat-menu-item *ngIf="post.user['_id']==user._id" (click)="editPost(post['_id'],newDescription,validate,cancel)">Edit</button>
-                        <button mat-menu-item *ngIf="post.user['_id']==user._id" (click)="delete(post['_id'])">Delete</button>
+                        <button mat-menu-item *ngIf="post.user['_id']==user?._id" (click)="editPost(post['_id'],newDescription,validate,cancel)">Edit</button>
+                        <button mat-menu-item *ngIf="post.user['_id']==user?._id" (click)="delete(post['_id'])">Delete</button>
                         <button mat-menu-item>Report</button>
                     </mat-menu>
                 </div>
