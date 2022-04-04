@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { FormGroup, NgForm } from '@angular/forms';
+import { Form, FormGroup, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { AuthData } from 'src/model/authData';
@@ -16,7 +16,6 @@ export class AuthService {
   isAuthenticated?: boolean;
   private userId:string;
   private user : User;
-  private normalUser : User;
   constructor(private http:HttpClient,private router:Router,private googleAuthService:SocialAuthService) { }
   getUserId():string {
     return this.userId;
@@ -33,15 +32,48 @@ export class AuthService {
     }
     return false;
     }
+    getAllUsers(){
+      return this.http.get<User[]>(`http://localhost:3000/api/users`);
+    }
 
   getUser(){
-    if(this.user){
-      return this.user;
+    return this.http.get<{user:User}>(`http://localhost:3000/api/users/${this.userId}`);
+  }
+  getUserByName(name:string){
+    return this.http.get<{users:any[]}>(`http://localhost:3000/api/users/search?name=${name}`)
+  }
+  getUserById(id:any){
+    return this.http.get<{user:User}>(`http://localhost:3000/api/users/${id}`);
+  }
+
+  updateUser(form:any){
+    let user;
+    
+    if(form.image){
+      user = new FormData()
+      for(let field in form){
+        if (form[field].length>1){
+          
+          user.append(field,form[field])
+        }
+      }
+      user.append("image",form.image)
+      console.log("user with image")
+      console.log(user.get("image"));
+    }else{
+      user = {}
+      for(let field in form){
+        if (form[field].length>1){
+          user[field] = form[field];
+        }
+      }
+      console.log("user without image")
+      console.log(user);
     }
-    this.http.get<{user:User}>(`http://localhost:3000/api/users/${this.userId}`).subscribe(responce => {
-      this.normalUser=responce.user;
-    })
-    return this.normalUser;
+/*     if(user.birthdate){
+      user.birthdate = new Date(user.birthdate);
+    } */
+    return this.http.put<{user:any}>(`http://localhost:3000/api/users/${this.userId}`,user);
   }
   
   signup(form:FormGroup){
@@ -62,7 +94,6 @@ export class AuthService {
       }
       success=true
       this.router.navigate(["/login"])
-
     })
     return success;
   }
@@ -82,7 +113,9 @@ export class AuthService {
         const expirationDate = new Date(now.getTime() + response.expiresIn * 1000);
         this.saveAuthData(this.token,expirationDate)
         this.authStatusListener.next(true);
-
+        this.http.get<{user:User}>(`http://localhost:3000/api/users/${this.userId}`).subscribe(responce => {
+          this.user=responce.user;
+        })
         this.router.navigate(["/"]);
       }
 
@@ -95,6 +128,7 @@ export class AuthService {
     this.isAuthenticated=false;
     this.authStatusListener.next(false)
     this.clearAuthData();
+
     this.router.navigate(["/login"]);
   }
 
@@ -116,6 +150,7 @@ export class AuthService {
       this.isAuthenticated=true;
       this.setAuthTimer(expiresIn/1000)
       this.authStatusListener.next(true);
+
     }
   }
 

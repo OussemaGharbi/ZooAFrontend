@@ -4,11 +4,13 @@ import { Like } from 'src/model/like';
 import { Post } from 'src/model/post';
 import { PostService } from '../../services/post.service';
 import { AuthService } from 'src/app/services/auth.service';
+import { User } from 'src/model/user';
 
 @Component({
   selector: 'app-posts',
   templateUrl: './posts.component.html',
-  styleUrls: ['./posts.component.css']
+  styleUrls: ['./posts.component.css'],
+  
 })
 export class PostsComponent implements OnInit {
 posts :Post []
@@ -17,7 +19,7 @@ like :Like[]
 images :any
 comments : any 
 likes : any
-
+user:User;
 userid :string
 likeid :string
 idpost :string
@@ -31,18 +33,21 @@ showOldDescription:boolean = true
               private router:Router) { }
 
   ngOnInit(): void {
+    this.authService.getUser().subscribe(user => {
+      this.user=user.user;
+      console.log(this.user);
+    });
     this.postService.getPosts().subscribe(resultat=>{
       this.posts = resultat as Post[];
       this.posts['id']
-      this.images=this.posts['image']
       this.comments=this.posts['comments']
       this.likes=this.posts['likes']
       this.showComments= this.posts.map(post => false)
       
+      
     });
   }
-  
-
+ 
   addlike(postid){
     this.authService.checkAuth()
     this.postService.addLike(postid).subscribe(resultat=>{

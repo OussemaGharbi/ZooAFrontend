@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { User } from 'src/model/user';
 import { NewPostComponent } from '../post/new-post/new-post.component';
 
 @Component({
@@ -13,10 +14,16 @@ export class HeaderComponent implements OnInit {
   user: any;
   isAuthenticated: boolean = false;
   constructor(private popup:MatDialog,private router: Router,private authService:AuthService) { }
-
+  users:User[];
   ngOnInit(): void {
   this.isAuthenticated = this.authService.isAuthenticated;
-   this.user=this.authService.getUser();
+   this.authService.getUser().subscribe(user => {
+    this.user=user.user;
+   });
+   this.authService.getAllUsers().subscribe(users => {
+    this.users=users;
+    console.log(this.users);
+   })
   }
    
    openDialog(){
@@ -30,6 +37,12 @@ export class HeaderComponent implements OnInit {
   }
   logout(){
     this.authService.logout();
+  }
+
+  search(search:string){
+    this.authService.getUserByName(search).subscribe(users =>{
+      this.users=users.users;
+    })
   }
 
 }
