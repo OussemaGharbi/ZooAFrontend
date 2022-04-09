@@ -25,7 +25,11 @@ export class VeterinaireService {
     return this.http.delete(this.api + 'veterinaire/'+id )
   }
 
-  uprove(id){
-    return this.http.get
+  uprove(id, appointment){
+    return this.http.put(this.getApi() + id, appointment)
   }
+  // takeAppointment(iduser,idVeterinaire){
+
+
+  // }
 }

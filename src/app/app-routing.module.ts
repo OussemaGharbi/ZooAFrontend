@@ -20,6 +20,7 @@ const routes: Routes = [
     {path:'appointments/:id', component:AppointmentComponent},
     {path:'', component:PostsComponent},
     {path:'takeAppointment', component:TakeAppointmentComponent},
+    {path:'takeAppointment/:id', component:TakeAppointmentComponent},
     {path:'profile', component:ProfileComponent},
     {path:'profile/edit' , component:EditProfileComponent},
     {path:'profile/:id', component:ProfileComponent},
