@@ -32,8 +32,8 @@
         <div class="col">
             <span [matMenuTriggerFor]="appMenu" class="material-icons" style="cursor:pointer;">more_horiz</span>
             <mat-menu #appMenu="matMenu">
-                <button mat-menu-item *ngIf="comment.user==user._id"  (click)="editComment(comment['_id'],newComment,cancel,validateLink)">Edit</button>
-                <button mat-menu-item *ngIf="comment.user==user._id" (click)="deleteComment(comment['_id'])">Delete</button>
+                <button mat-menu-item *ngIf="comment.user['_id']==user._id"  (click)="editComment(comment['_id'],newComment,cancel,validateLink)">Edit</button>
+                <button mat-menu-item *ngIf="comment.user['_id']==user._id" (click)="deleteComment(comment['_id'])">Delete</button>
                 <button mat-menu-item>report</button>
 
             </mat-menu>
