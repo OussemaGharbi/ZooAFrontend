@@ -42,23 +42,42 @@
         <div class="card-body body">
             <div class="row">
                 <div #description *ngIf="showOldDescription" class="col-auto">{{ post['description'] }}</div>
-                <textarea #newDescription style="display:none"></textarea>
-                <button #validate (click)="validatePost(post['_id'],newDescription,validate,cancel)"
-                    style="display: none">valider</button>
-                <button #cancel (click)="cancelPostChanges(newDescription,validate,cancel)"
-                    style="display: none">cancel</button>
+                <textarea #newDescription style="display:none;resize: none; border: none; margin-bottom: 10px;"></textarea>
+            </div>
+            <div class="row" style="float: right;padding-right: 30px;">  
+                <div class="col-auto">
+                    <button #validate class="btn btn valider" value="valider" (click)="validatePost(post['_id'],newDescription,validate,cancel)" style="display: none">
+                        <span class="material-icons-outlined valider">check</span>
+                    </button>
+                </div>
+                <div class="col-auto">
+                    <button #cancel class="btn btn cancel" value="cancel" (click)="cancelPostChanges(newDescription,validate,cancel)" style="display: none">
+                        <span class="material-icons-outlined cancel">close</span> 
+                    </button>
+                </div>
             </div>
             <hr>
             <div class="row">
-                <div class="col-sm-3" *ngFor="let image of post['images']">
+                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                      <div class="carousel-item col-sm-3 active" *ngFor="let image of post.images">
+                        <img class="d-block w-100" src="{{ image }}" alt="">
+                      </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    </a>
+                  </div>
+                <!-- <div class="col-sm-3" *ngFor="let image of post['images']">
                     <img src="{{ image }}" alt="post images " class="post">
-
-                </div>
+                </div> 
+                -->
             </div>
         </div>
         <div class="row">
-
-
             <div class="col-sm" style="margin-left: 10px">
                 <label><a routerLink="/">{{ post['likes']?.length }} people likes</a></label>
             </div>
@@ -98,4 +117,3 @@
         </div>
     </div>
 </div>
-</cdk-virtual-scroll-viewport>

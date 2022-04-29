@@ -31,21 +31,19 @@ showOldDescription:boolean = true
   constructor(private postService: PostService,
               private authService: AuthService,
               private router:Router) { }
+  
+  loadPosts(){
+    this.postService.getPosts().subscribe(resultat=>{
+      this.posts = resultat as Post[];   
+    });
+  }
 
   ngOnInit(): void {
     this.authService.getUser().subscribe(user => {
       this.user=user.user;
       console.log(this.user);
     });
-    this.postService.getPosts().subscribe(resultat=>{
-      this.posts = resultat as Post[];
-      this.posts['id']
-      this.comments=this.posts['comments']
-      this.likes=this.posts['likes']
-      this.showComments= this.posts.map(post => false)
-      
-      
-    });
+    this.loadPosts();
   }
  
   addlike(postid){
@@ -68,7 +66,6 @@ showOldDescription:boolean = true
     this.showComments=this.posts.map(comment => false)      
     this.showComments[index]=true
     this.idpost=this.posts[index]._id
-    console.log(this.idpost)
   }
 
   delete(idpost){
@@ -103,7 +100,7 @@ showOldDescription:boolean = true
       // const index=this.posts.indexOf(post)
       // this.posts[index]=resultat
     })
-    this.router.navigate([''])
+    this.loadPosts();
 
 
   }
@@ -115,6 +112,7 @@ showOldDescription:boolean = true
     })
     newDescription.value = post.description
     newDescription.style.display = ""
+    newDescription.focus = true
     cancel.style.display = ""
     validate.style.display = ""
     this.showOldDescription = false

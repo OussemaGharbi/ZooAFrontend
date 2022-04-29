@@ -78,6 +78,17 @@ font-family: Poppins;
 .clickable:hover{
     text-decoration: underline;
 }
+.valider{
+    color:#2691d9;
+    width: 30px;
+    height:30px;
+}
+.cancel{
+    color:#2691d9;
+    width: 30px;
+    height: 30px;
+}
+
 /* .intialDiv{
     border-radius:30px;
     background-color: aliceblue;
