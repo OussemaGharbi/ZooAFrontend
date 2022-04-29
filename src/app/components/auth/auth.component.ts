@@ -28,7 +28,7 @@ export class AuthComponent implements OnInit {
       const token=this.authService.login(this.loginForm.value.email, this.loginForm.value.password);
       if(token){
         this.loginFailed=false;
-        this.router.navigate(['/posts']);
+        this.router.navigate(['']);
       }else{
         this.loginFailed=true;
       }

@@ -20,9 +20,9 @@ const routes: Routes = [
     {path:'appointments/:id', component:AppointmentComponent},
     {path:'', component:PostsComponent},
     {path:'takeAppointment', component:TakeAppointmentComponent},
-    {path:'profile', component:ProfileComponent},
-    {path:'profile/edit' , component:EditProfileComponent},
-    {path:'profile/:id', component:ProfileComponent},
+    {path:'profile', component:ProfileComponent, canActivate:[AuthGuard]},
+    {path:'profile/edit' , component:EditProfileComponent, canActivate:[AuthGuard]},
+    {path:'profile/:id', component:ProfileComponent, canActivate:[AuthGuard]},
     
   {
       path: '', component: PostsComponent, children :[

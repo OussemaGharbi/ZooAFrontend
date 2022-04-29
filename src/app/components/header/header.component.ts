@@ -22,7 +22,6 @@ export class HeaderComponent implements OnInit {
    });
    this.authService.getAllUsers().subscribe(users => {
     this.users=users;
-    console.log(this.users);
    })
   }
    

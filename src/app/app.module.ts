@@ -39,7 +39,7 @@ import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { FilterPipe } from './filter.pipe';
-
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
   declarations: [
     AppComponent,
@@ -81,7 +81,8 @@ import { FilterPipe } from './filter.pipe';
     CoolSocialLoginButtonsModule,
     SocialLoginModule,
     ScrollingModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    NgbModule
   ],
   providers: [
     VeterinaireService,

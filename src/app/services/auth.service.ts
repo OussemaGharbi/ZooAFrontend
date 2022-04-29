@@ -25,6 +25,10 @@ export class AuthService {
   getAuthStatusListener(){
     return this.authStatusListener.asObservable();
   }
+  addRating(user:string,userRated:string,value:number){
+    const rating ={value:value, user:user, userRated:userRated};
+     return this.http.post<any>("http://localhost:3000/api/ratings",rating);
+  }
   checkAuth(){
     if (!(this.isAuthenticated))
     {
@@ -48,7 +52,6 @@ export class AuthService {
 
   updateUser(form:any){
     let user;
-    
     if(form.image){
       user = new FormData()
       for(let field in form){
@@ -93,7 +96,7 @@ export class AuthService {
         return null;
       }
       success=true
-      this.router.navigate(["/login"])
+      this.router.navigate(["login"])
     })
     return success;
   }
