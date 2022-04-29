@@ -12,6 +12,7 @@ import { NewPostComponent } from './components/post/new-post/new-post.component'
 import { ShowAllCommentsComponent } from './components/post/show-all-comments/show-all-comments.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
+import { VeterinaireprofileComponent } from './veterinaireprofile/veterinaireprofile.component';
 
 const routes: Routes = [
     {path:'veterinaire', component:VeterinaireComponent},
@@ -24,6 +25,7 @@ const routes: Routes = [
     {path:'profile', component:ProfileComponent},
     {path:'profile/edit' , component:EditProfileComponent},
     {path:'profile/:id', component:ProfileComponent},
+    {path:'veterinaire/:id', component:VeterinaireprofileComponent},
     
   {
       path: '', component: PostsComponent, children :[

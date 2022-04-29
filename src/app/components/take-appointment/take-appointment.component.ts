@@ -14,7 +14,7 @@ import { User } from 'src/model/user';
 export class TakeAppointmentComponent implements OnInit {
   selected:string
   Hours=['08:00','09:00', '10:00', '11:00', '12:00','13:00', '14:00', '15:00', '16:00','17:00']
-  id = "623355cf23bf0b4ca97ebcf8"
+  id
   user:User ;
   Appointment = new FormControl();
   // table:string[]=[]
@@ -24,7 +24,7 @@ export class TakeAppointmentComponent implements OnInit {
   appointmentGroup = new FormGroup({
     hourAppointment: new FormControl(''),
     dateAppointment: new FormControl(''),
-    descriptionAppointment: new FormControl(''),
+    description: new FormControl(''),
 
   })
 
@@ -75,11 +75,11 @@ export class TakeAppointmentComponent implements OnInit {
     console.log(this.appointmentGroup.value)
     console.log(this.id)
     let date = this.appointmentGroup.value.dateAppointment
-    let description = this.appointmentGroup.value.descriptionAppointment
-    
+    let description = this.appointmentGroup.value.description
+    let veterinary
     const appointment = new Appointment(date,description,this.user['id'],this.id)
     if(this.appointmentGroup.valid){
-      this.appointmentService.takeAppointment(this.appointmentGroup.value).subscribe(resultat=>{
+      this.appointmentService.takeAppointment(appointment).subscribe(resultat=>{
         console.log(resultat)
       })
     }
