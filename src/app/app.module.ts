@@ -39,6 +39,9 @@ import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { FilterPipe } from './filter.pipe';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { VeterinaireprofileComponent } from './veterinaireprofile/veterinaireprofile.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -59,6 +62,7 @@ import { FilterPipe } from './filter.pipe';
     ProfileComponent,
     EditProfileComponent,
     FilterPipe,
+    VeterinaireprofileComponent,
   ],
   imports: [
     BrowserModule,
@@ -81,7 +85,10 @@ import { FilterPipe } from './filter.pipe';
     CoolSocialLoginButtonsModule,
     SocialLoginModule,
     ScrollingModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    FlexLayoutModule,
+    MatProgressSpinnerModule
+    
   ],
   providers: [
     VeterinaireService,

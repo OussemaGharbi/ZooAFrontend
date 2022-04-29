@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { AppointmentService } from 'src/app/services/appointment.service';
+import { AuthService } from 'src/app/services/auth.service';
+import { Appointment } from 'src/model/appointment';
+import { User } from 'src/model/user';
 
 @Component({
   selector: 'app-take-appointment',
@@ -11,12 +14,21 @@ import { AppointmentService } from 'src/app/services/appointment.service';
 export class TakeAppointmentComponent implements OnInit {
   selected:string
   Hours=['08:00','09:00', '10:00', '11:00', '12:00','13:00', '14:00', '15:00', '16:00','17:00']
-  id = "623355cf23bf0b4ca97ebcf8"
+  id
+  user:User ;
   Appointment = new FormControl();
   // table:string[]=[]
   appointments:any
 
-  constructor(private appointmentService:AppointmentService, private activatedRoute: ActivatedRoute) { }
+  //appointment group for formulaire
+  appointmentGroup = new FormGroup({
+    hourAppointment: new FormControl(''),
+    dateAppointment: new FormControl(''),
+    description: new FormControl(''),
+
+  })
+
+  constructor(private appointmentService:AppointmentService, private activatedRoute: ActivatedRoute, private authService: AuthService) { }
 
   ngOnInit(): void {
 
@@ -45,7 +57,32 @@ export class TakeAppointmentComponent implements OnInit {
       
 
     })
+    //pour recupérer le user
+      this.authService.getUser().subscribe((user)=>{
+        this.user = user.user 
+      })
+      // pour récupérer l'id de veterinaire
+      this.activatedRoute.params.subscribe({
+        next:param=>{
+          this.id= param['id']
+        }
+      })
+    
 
+  }
+
+  takeAppointmentSubmit(){
+    console.log(this.appointmentGroup.value)
+    console.log(this.id)
+    let date = this.appointmentGroup.value.dateAppointment
+    let description = this.appointmentGroup.value.description
+    let veterinary
+    const appointment = new Appointment(date,description,this.user['id'],this.id)
+    if(this.appointmentGroup.valid){
+      this.appointmentService.takeAppointment(appointment).subscribe(resultat=>{
+        console.log(resultat)
+      })
+    }
   }
  
   myFilter = (d: Date | null): boolean => {

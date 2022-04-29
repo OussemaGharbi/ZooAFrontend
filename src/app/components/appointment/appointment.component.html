@@ -16,7 +16,7 @@
         <tr *ngFor="let appointment of appointments">
 
             <td scope="row"> {{ appointment.user['lname']}} </td>
-            <td scope="row"> {{ appointment.user.fname  }} </td>
+            <td scope="row"> {{ appointment.user['fname']  }} </td>
             <td scope="row"> {{ appointment.user['phone']  }} </td>
             <td scope="row"> {{ appointment.user['email']  }} </td>
             <td scope="row"> {{ appointment['description']  }} </td>
