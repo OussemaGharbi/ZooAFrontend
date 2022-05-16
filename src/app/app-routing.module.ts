@@ -13,6 +13,8 @@ import { ShowAllCommentsComponent } from './components/post/show-all-comments/sh
 import { ProfileComponent } from './components/profile/profile.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { VeterinaireprofileComponent } from './veterinaireprofile/veterinaireprofile.component';
+import { SignupveterinaireComponent } from './components/signupveterinaire/signupveterinaire.component';
+import { MyappointmentsComponent } from './components/myappointments/myappointments.component';
 
 const routes: Routes = [
     {path:'veterinaire', component:VeterinaireComponent},
@@ -26,6 +28,8 @@ const routes: Routes = [
     {path:'profile/edit' , component:EditProfileComponent},
     {path:'profile/:id', component:ProfileComponent},
     {path:'veterinaire/:id', component:VeterinaireprofileComponent},
+    {path:'signup/veterinaire', component:SignupveterinaireComponent},
+    {path:'myappointments/:id', component:MyappointmentsComponent},
     
   {
       path: '', component: PostsComponent, children :[

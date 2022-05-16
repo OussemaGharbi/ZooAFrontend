@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AppointmentService } from 'src/app/services/appointment.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { Appointment } from 'src/model/appointment';
@@ -28,7 +28,7 @@ export class TakeAppointmentComponent implements OnInit {
 
   })
 
-  constructor(private appointmentService:AppointmentService, private activatedRoute: ActivatedRoute, private authService: AuthService) { }
+  constructor(private appointmentService:AppointmentService, private activatedRoute: ActivatedRoute, private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
 
@@ -81,6 +81,7 @@ export class TakeAppointmentComponent implements OnInit {
     if(this.appointmentGroup.valid){
       this.appointmentService.takeAppointment(appointment).subscribe(resultat=>{
         console.log(resultat)
+        this.router.navigate([''])
       })
     }
   }
