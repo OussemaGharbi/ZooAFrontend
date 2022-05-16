@@ -83,7 +83,7 @@
             </div>
             <div class="col-sm">
                 <label style="float: right;margin-right: 10px;">
-                    <a [routerLink]="['showAllComments',post['_id']]" (click)="showSection(posts.indexOf(post))">{{
+                    <a  (click)="showSection(posts.indexOf(post))">{{
                         post['comments']?.length }} comments</a>
                 </label>
             </div>
@@ -110,7 +110,7 @@
             <div class="d-flex justify-content-center" *ngIf="showComments[posts.indexOf(post)]">
                 <div class="card" style="width: 38rem;">
                     <div class="card-body">
-                        <router-outlet></router-outlet>
+                        <app-show-all-comments [idpost]="post['_id']"></app-show-all-comments>
                     </div>
                 </div>
             </div>

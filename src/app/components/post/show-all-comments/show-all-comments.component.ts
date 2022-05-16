@@ -12,11 +12,10 @@ import { User } from 'src/model/user';
 })
 export class ShowAllCommentsComponent implements OnInit {
 
-
   comments: any[]
   image: any
   userid: string
-  idpost: string
+  @Input() idpost: string
   text: string
   showOldComment: boolean = true
   user:User
@@ -30,6 +29,7 @@ export class ShowAllCommentsComponent implements OnInit {
       this.user=user.user;
       console.log(this.user);
     });
+    this.showPostComments(this.idpost)
     this.activatedRoute.params.subscribe({
       next: param => {
         this.idpost = param['id'];
@@ -41,7 +41,7 @@ export class ShowAllCommentsComponent implements OnInit {
     this.userid = this.authService.getUserId()
   }
   showPostComments(postid: string) {
-    this.postService.getAllComments(postid).subscribe(resultat => {
+    this.postService.getAllComments(this.idpost).subscribe(resultat => {
       this.comments = resultat
       console.log(resultat)
       this.extractUserImage()

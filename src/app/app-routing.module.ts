@@ -23,7 +23,7 @@ const routes: Routes = [
     {path:'appointments/:id', component:AppointmentComponent},
     {path:'', component:PostsComponent},
     {path:'takeAppointment', component:TakeAppointmentComponent},
-    {path:'takeAppointment/:id', component:TakeAppointmentComponent},
+    {path:'takeAppointment/:id', component:TakeAppointmentComponent, canActivate:[AuthGuard]},
     {path:'profile', component:ProfileComponent},
     {path:'profile/edit' , component:EditProfileComponent},
     {path:'profile/:id', component:ProfileComponent},
@@ -34,7 +34,7 @@ const routes: Routes = [
   {
       path: '', component: PostsComponent, children :[
       {path:'newPost' , component:NewPostComponent},
-      {path: 'showAllComments/:id', component: ShowAllCommentsComponent },
+      {path: ':id', component: ShowAllCommentsComponent },
       {path:'deletePosts' , component:PostsComponent},
       {path:'addLike/:id' , component:PostsComponent},
       {path:'deleteLike/:id' , component:PostsComponent},
