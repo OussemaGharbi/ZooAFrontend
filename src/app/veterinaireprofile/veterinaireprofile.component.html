@@ -1,0 +1,31 @@
+<mat-toolbar color="primary">
+    veterinaires
+</mat-toolbar>
+<!-- {{ veterinaire['email'] }} -->
+<mat-spinner *ngIf="!isloading"></mat-spinner>
+
+<div class="content">
+    <div class="container profile">
+
+        <mat-card class="mat-elevation-z4" *ngIf="isloading">
+            <mat-card-header>
+                <!-- <mat-card-title> {{veterinaire.fname}}</mat-card-title> -->
+            </mat-card-header>
+            <img mat-card-image src="../../../../../assets/images/avatar.png">
+            <mat-card-content>
+                <label for="email"><strong>Email:</strong> </label>
+                <p id="email">
+                    {{ veterinaire['email'] }}
+                </p>
+                <label for="phone"><strong>Numéro de telephone:</strong> </label>
+                <p id="phone">
+                    {{veterinaire.phone}}
+                </p>
+            </mat-card-content>
+            <mat-card-actions>
+                <a><button mat-raised-button color="accent" [routerLink]="['/takeAppointment/',veterinaire._id]">Prendre un rendez-vous</button></a>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+
+</div>

@@ -40,6 +40,10 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { FilterPipe } from './filter.pipe';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { VeterinaireprofileComponent } from './veterinaireprofile/veterinaireprofile.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,6 +63,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     ProfileComponent,
     EditProfileComponent,
     FilterPipe,
+    VeterinaireprofileComponent,
   ],
   imports: [
     BrowserModule,
@@ -82,7 +87,10 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     SocialLoginModule,
     ScrollingModule,
     MatAutocompleteModule,
-    NgbModule
+    NgbModule,
+    FlexLayoutModule,
+    MatProgressSpinnerModule
+    
   ],
   providers: [
     VeterinaireService,

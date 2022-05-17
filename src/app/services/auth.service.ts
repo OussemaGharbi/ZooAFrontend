@@ -29,6 +29,7 @@ export class AuthService {
     const rating ={value:value, user:user, userRated:userRated};
      return this.http.post<any>("http://localhost:3000/api/ratings",rating);
   }
+  
   checkAuth(){
     if (!(this.isAuthenticated))
     {
