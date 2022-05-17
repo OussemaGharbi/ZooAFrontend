@@ -96,6 +96,11 @@ getAllComments(postid:string) : Observable<any>{
       catchError(this.handleError)
     )
   }
+  //report.component
+  report(data){
+    return this.http.post('http://localhost:3000/api/reports/send/' +  data.id_sender + '/' +  data.id_post,data)
+
+  }
 
   updateComment(Post_id :string,Comment_id:string,text:string) : Observable<any>{
     return this.http.put(this.api + 'posts/'+Post_id+'/Comment/'+Comment_id,{text:text}).pipe(

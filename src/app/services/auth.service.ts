@@ -83,7 +83,7 @@ export class AuthService {
       lname:form.value.lname,
       email:form.value.email,
       password:form.value.password,
-      role:'veterinaire',
+      role:'user',
       birthdate:form.value.birthdate,
       phone:form.value.phone,
       adresse:form.value.adresse,

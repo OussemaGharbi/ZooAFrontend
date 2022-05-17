@@ -48,10 +48,13 @@
         </button>
       
     </div>
-    <div *ngIf="isAuthenticated">
+    <div *ngIf="isAuthenticated && user" >
         <img [matMenuTriggerFor]="appMenu" src="{{user?.image | checkImage}}" [ngClass]="{'img':user?.image,'avatar':!user?.image}">
-        <mat-menu #appMenu="matMenu">
+        <mat-menu #appMenu="matMenu" >
             <button mat-menu-item routerLink="/profile"><mat-icon>account_circle</mat-icon>Profile</button>
+            <button *ngIf="user['role']=='user'" mat-menu-item [routerLink]="['/myappointments',user['_id']]"><mat-icon>calendar_today</mat-icon>My Appointments</button>
+            <button *ngIf="user['role']=='veterinary'" mat-menu-item [routerLink]="['/appointments',user['_id']]"><mat-icon>calendar_today</mat-icon>My Appointments</button>
+            <button *ngIf="user['role']=='user'" mat-menu-item [routerLink]="['/upgrade',user['_id']]"><mat-icon>calendar_today</mat-icon>Upgrade To Veterinary</button>
             <button mat-menu-item (click)="logout()"><mat-icon>logout</mat-icon>Logout</button>
         </mat-menu>
      

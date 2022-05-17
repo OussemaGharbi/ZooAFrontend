@@ -34,7 +34,7 @@
                     <mat-menu #appMenu="matMenu">
                         <button mat-menu-item *ngIf="post.user['_id']==user?._id" (click)="editPost(post['_id'],newDescription,validate,cancel)">Edit</button>
                         <button mat-menu-item *ngIf="post.user['_id']==user?._id" (click)="delete(post['_id'])">Delete</button>
-                        <button mat-menu-item>Report</button>
+                        <button mat-menu-item (click)="popUp(post['_id'])">Report</button>
                     </mat-menu>
                 </div>
             </div>

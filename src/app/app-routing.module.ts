@@ -15,11 +15,12 @@ import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { VeterinaireprofileComponent } from './veterinaireprofile/veterinaireprofile.component';
 import { SignupveterinaireComponent } from './components/signupveterinaire/signupveterinaire.component';
 import { MyappointmentsComponent } from './components/myappointments/myappointments.component';
+import { UpgradeRequestComponent } from './components/upgrade-request/upgrade-request.component';
 
 const routes: Routes = [
     {path:'veterinaire', component:VeterinaireComponent},
     {path:'login', component:AuthComponent},
-    {path:'signup', component:SignupComponent},
+    {path:'signup', component:SignupveterinaireComponent},
     {path:'appointments/:id', component:AppointmentComponent},
     {path:'', component:PostsComponent},
     {path:'takeAppointment', component:TakeAppointmentComponent},
@@ -30,6 +31,7 @@ const routes: Routes = [
     {path:'veterinaire/:id', component:VeterinaireprofileComponent},
     {path:'signup/veterinaire', component:SignupveterinaireComponent},
     {path:'myappointments/:id', component:MyappointmentsComponent},
+    {path:'upgrade/:id', component:UpgradeRequestComponent},
     
   {
       path: '', component: PostsComponent, children :[

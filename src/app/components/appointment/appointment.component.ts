@@ -37,8 +37,8 @@ export class AppointmentComponent implements OnInit {
   }
   approvedStatus(status){
     return{
-      'badge alert-success': status ==true ? true : false,
-      'badge alert-warning': status == true ? false : true
+      'bg-success text-white': status ==true ? true : false,
+      'bg-warning text-white': status == true ? false : true
 
     }
 

@@ -44,6 +44,8 @@ import { VeterinaireprofileComponent } from './veterinaireprofile/veterinairepro
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { SignupveterinaireComponent } from './components/signupveterinaire/signupveterinaire.component';
 import { MyappointmentsComponent } from './components/myappointments/myappointments.component';
+import { UpgradeRequestComponent } from './components/upgrade-request/upgrade-request.component';
+import { ReportComponent } from './components/report/report.component';
 
 @NgModule({
   declarations: [
@@ -66,7 +68,9 @@ import { MyappointmentsComponent } from './components/myappointments/myappointme
     FilterPipe,
     VeterinaireprofileComponent,
     SignupveterinaireComponent,
-    MyappointmentsComponent],
+    MyappointmentsComponent,
+    UpgradeRequestComponent,
+    ReportComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

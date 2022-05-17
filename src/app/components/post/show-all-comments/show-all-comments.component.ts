@@ -30,17 +30,19 @@ export class ShowAllCommentsComponent implements OnInit {
       console.log(this.user);
     });
     this.showPostComments(this.idpost)
-    this.activatedRoute.params.subscribe({
-      next: param => {
-        this.idpost = param['id'];
-        this.showPostComments(this.idpost)
-      }
-    })
+    // this.activatedRoute.params.subscribe({
+    //   next: param => {
+    //     this.idpost = param['id'];
+    //   }
+    // })
+    console.log(this.idpost);
+    
   }
   extractUserImage() {
     this.userid = this.authService.getUserId()
   }
   showPostComments(postid: string) {
+    console.log(this.idpost)
     this.postService.getAllComments(this.idpost).subscribe(resultat => {
       this.comments = resultat
       console.log(resultat)
@@ -49,6 +51,8 @@ export class ShowAllCommentsComponent implements OnInit {
   }
 
   addComment(comment) {
+    console.log('idpost : '+ this.idpost);
+    
     this.postService.addComment(this.idpost, comment).subscribe(resultat => {
       console.log(resultat);
       console.log(comment)
