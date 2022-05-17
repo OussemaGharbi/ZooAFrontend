@@ -75,9 +75,10 @@ export class TakeAppointmentComponent implements OnInit {
     console.log(this.appointmentGroup.value)
     console.log(this.id)
     let date = this.appointmentGroup.value.dateAppointment
+    let hour = this.appointmentGroup.value.hourAppointment
     let description = this.appointmentGroup.value.description
     let veterinary
-    const appointment = new Appointment(date,description,this.user['id'],this.id)
+    const appointment = new Appointment(date,hour,description,this.user['id'],this.id)
     if(this.appointmentGroup.valid){
       this.appointmentService.takeAppointment(appointment).subscribe(resultat=>{
         console.log(resultat)

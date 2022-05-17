@@ -52,9 +52,10 @@ export class PostService {
       catchError(this.handleError)
     );
   }
-  addPost(text,images): Observable<any> {
+  addPost(text,images,categorie): Observable<any> {
     const postData = new FormData();
     postData.append("description",text);
+    postData.append("categorie",categorie);
     for (var i =0;i<images.length;i++) {
     postData.append("images",images[i]);
   }

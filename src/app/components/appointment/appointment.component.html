@@ -44,6 +44,7 @@
                                 <tr>
                                 <th><span>Veterinaire</span></th>
                                 <th><span>Date</span></th>
+                                <th><span>Hour</span></th>
                                 <th class="text-center"><span>Phone Number</span></th>
                                 <th><span>Phone</span></th>
                                 <th><span>Description</span></th>
@@ -58,6 +59,7 @@
                                         <span class="user-subhead">{{appointment['veterinary']['fname']}}</span>
                                     </td>
                                     <td>{{appointment.date | date}}</td>
+                                    <td>{{appointment.hour }}</td>
                                     <td>
                                         {{appointment['veterinary']['phone']}}
                                     </td>

@@ -46,6 +46,8 @@ import { SignupveterinaireComponent } from './components/signupveterinaire/signu
 import { MyappointmentsComponent } from './components/myappointments/myappointments.component';
 import { UpgradeRequestComponent } from './components/upgrade-request/upgrade-request.component';
 import { ReportComponent } from './components/report/report.component';
+import { SearchPipe } from './search.pipe';
+import { CategoriePipe } from './categorie.pipe';
 
 @NgModule({
   declarations: [
@@ -70,7 +72,9 @@ import { ReportComponent } from './components/report/report.component';
     SignupveterinaireComponent,
     MyappointmentsComponent,
     UpgradeRequestComponent,
-    ReportComponent],
+    ReportComponent,
+    SearchPipe,
+    CategoriePipe],
   imports: [
     BrowserModule,
     AppRoutingModule,

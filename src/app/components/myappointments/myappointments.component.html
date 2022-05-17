@@ -12,6 +12,7 @@
                                 <tr>
                                 <th><span>Veterinaire</span></th>
                                 <th><span>Date</span></th>
+                                <th><span>Hour</span></th>
                                 <th class="text-center"><span>Status</span></th>
                                 <th><span>Numéro de téléphone</span></th>
                                 <th>&nbsp;</th>
@@ -24,6 +25,7 @@
                                         <span class="user-subhead">{{appointment['veterinary']['fname']}}</span>
                                     </td>
                                     <td>{{appointment.date | date}}</td>
+                                    <td>{{appointment.hour }}</td>
                                     <td class="text-center" [ngClass]="approvedStatus(appointment['status'])">
                                         {{ appointment['status'] ? 'Approved' :'Pending'}} 
                                     </td>

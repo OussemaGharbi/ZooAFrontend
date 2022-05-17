@@ -15,6 +15,7 @@ import { ReportComponent } from '../report/report.component';
   
 })
 export class PostsComponent implements OnInit {
+  selected='hello'
 posts :Post []
 showComments: boolean []= []
 like :Like[]
@@ -39,6 +40,8 @@ showOldDescription:boolean = true
       this.posts = resultat as Post[];   
     });
   }
+
+  
 
   ngOnInit(): void {
     this.authService.getUser().subscribe(user => {
