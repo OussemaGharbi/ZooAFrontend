@@ -6,6 +6,14 @@
         <textarea class="form-control" #description name="description" placeholder="Add description here..."
             style="resize:none;"></textarea>
     </div>
+    <div class="row mt-2"  style="height:30px">
+        <select name="" id="" #categorie>
+            <option value="cat">cat</option>
+            <option value="dog">dog</option>
+            <option value="bird">bird</option>
+        </select>
+
+    </div>
     <div class="row" style="height:100px">
         <div class="col-auto" style="margin-top:10px;">
             <h4>Add image</h4>
@@ -15,6 +23,6 @@
         </div>
     </div>
     <div class="row">
-        <input type="submit" class="btn btn-danger" (click)="addPost(description,images)" value="add post">
+        <input type="submit" class="btn btn-danger" (click)="addPost(description,images,categorie)" value="add post">
     </div>
 </div>

@@ -52,9 +52,10 @@ export class PostService {
       catchError(this.handleError)
     );
   }
-  addPost(text,images): Observable<any> {
+  addPost(text,images,categorie): Observable<any> {
     const postData = new FormData();
     postData.append("description",text);
+    postData.append("categorie",categorie);
     for (var i =0;i<images.length;i++) {
     postData.append("images",images[i]);
   }
@@ -95,6 +96,11 @@ getAllComments(postid:string) : Observable<any>{
     return this.http.delete(this.api + 'posts/'+Post_id +'/Comment/'+Comment_id).pipe(
       catchError(this.handleError)
     )
+  }
+  //report.component
+  report(data){
+    return this.http.post('http://localhost:3000/api/reports/send/' +  data.id_sender + '/' +  data.id_post,data)
+
   }
 
   updateComment(Post_id :string,Comment_id:string,text:string) : Observable<any>{

@@ -5,6 +5,8 @@ import { Post } from 'src/model/post';
 import { PostService } from '../../services/post.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { User } from 'src/model/user';
+import { MatDialog } from '@angular/material/dialog';
+import { ReportComponent } from '../report/report.component';
 
 @Component({
   selector: 'app-posts',
@@ -13,6 +15,7 @@ import { User } from 'src/model/user';
   
 })
 export class PostsComponent implements OnInit {
+  selected='hello'
 posts :Post []
 showComments: boolean []= []
 like :Like[]
@@ -30,13 +33,15 @@ showOldDescription:boolean = true
 
   constructor(private postService: PostService,
               private authService: AuthService,
-              private router:Router) { }
+              private router:Router,public dialog:MatDialog) { }
   
   loadPosts(){
     this.postService.getPosts().subscribe(resultat=>{
       this.posts = resultat as Post[];   
     });
   }
+
+  
 
   ngOnInit(): void {
     this.authService.getUser().subscribe(user => {
@@ -45,11 +50,23 @@ showOldDescription:boolean = true
     });
     this.loadPosts();
   }
+  popUp(idpost){
+    console.log(idpost)
+    console.log(this.user['_id']);
+    
+    const dialogRef = this.dialog.open(ReportComponent, {
+      width: '1000px',
+      data: {idpost: idpost, userId:this.user['_id']},
+    });
+    
+    
+  }
  
   addlike(postid){
     this.authService.checkAuth()
     this.postService.addLike(postid).subscribe(resultat=>{
       this.nbrlikes=resultat.likes.length
+      console.log(postid)
       this.posts=this.posts.map(post=>{
         if(post._id==resultat._id){
           console.log(post)

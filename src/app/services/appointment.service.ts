@@ -18,6 +18,10 @@ export class AppointmentService {
 
   }
 
+  getMyAppointments(id) {
+    return this.http.get(this.getApi() + 'appointement/myappointments/' + id)
+  }
+
   approveAppointment(id) {
     return this.http.put(this.getApi() + 'appointement/' + id, '')
   }

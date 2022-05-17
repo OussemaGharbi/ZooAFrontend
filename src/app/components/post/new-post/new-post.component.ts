@@ -16,11 +16,11 @@ export class NewPostComponent implements OnInit {
   }
   
 
-  addPost(description,postimages) {
+  addPost(description,postimages,categorie) {
     this.authService.checkAuth()
     const images : File = postimages.files;
     const text : string = description.value
-    this.postService.addPost(text,images).subscribe(response=>{
+    this.postService.addPost(text,images,categorie.value).subscribe(response=>{
     })
   }
 

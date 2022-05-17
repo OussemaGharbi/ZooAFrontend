@@ -79,6 +79,29 @@ export class AuthService {
     } */
     return this.http.put<{user:any}>(`http://localhost:3000/api/users/${this.userId}`,user);
   }
+  signupasveterinaire(form:FormGroup){
+    let success;
+    console.log(form.value)
+    const user = {
+      fname:form.value.fname,
+      lname:form.value.lname,
+      email:form.value.email,
+      password:form.value.password,
+      role:'user',
+      birthdate:form.value.birthdate,
+      phone:form.value.phone,
+      adresse:form.value.adresse,
+    }
+    this.http.post("http://localhost:3000/api/users/signup",user).subscribe(response => {
+      if(response["error"]){
+        success = false;
+        return null;
+      }
+      success=true
+      this.router.navigate(["/login"])
+    })
+    return success;
+  }
   
   signup(form:FormGroup){
     let success;

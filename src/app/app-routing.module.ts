@@ -13,24 +13,30 @@ import { ShowAllCommentsComponent } from './components/post/show-all-comments/sh
 import { ProfileComponent } from './components/profile/profile.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { VeterinaireprofileComponent } from './veterinaireprofile/veterinaireprofile.component';
+import { SignupveterinaireComponent } from './components/signupveterinaire/signupveterinaire.component';
+import { MyappointmentsComponent } from './components/myappointments/myappointments.component';
+import { UpgradeRequestComponent } from './components/upgrade-request/upgrade-request.component';
 
 const routes: Routes = [
     {path:'veterinaire', component:VeterinaireComponent},
     {path:'login', component:AuthComponent},
-    {path:'signup', component:SignupComponent},
+    {path:'signup', component:SignupveterinaireComponent},
     {path:'appointments/:id', component:AppointmentComponent},
     {path:'', component:PostsComponent},
     {path:'takeAppointment', component:TakeAppointmentComponent},
-    {path:'takeAppointment/:id', component:TakeAppointmentComponent},
+    {path:'takeAppointment/:id', component:TakeAppointmentComponent, canActivate:[AuthGuard]},
     {path:'profile', component:ProfileComponent},
     {path:'profile/edit' , component:EditProfileComponent},
     {path:'profile/:id', component:ProfileComponent},
     {path:'veterinaire/:id', component:VeterinaireprofileComponent},
+    {path:'signup/veterinaire', component:SignupveterinaireComponent},
+    {path:'myappointments/:id', component:MyappointmentsComponent},
+    {path:'upgrade/:id', component:UpgradeRequestComponent},
     
   {
       path: '', component: PostsComponent, children :[
       {path:'newPost' , component:NewPostComponent},
-      {path: 'showAllComments/:id', component: ShowAllCommentsComponent },
+      {path: ':id', component: ShowAllCommentsComponent },
       {path:'deletePosts' , component:PostsComponent},
       {path:'addLike/:id' , component:PostsComponent},
       {path:'deleteLike/:id' , component:PostsComponent},
